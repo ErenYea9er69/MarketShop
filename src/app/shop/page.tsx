@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Search, Filter } from "lucide-react"
-import prisma from "@/lib/prisma"
+import { prisma } from "@/lib/prisma"
 import { Card, CardContent } from "@/components/ui/Card"
 import { Input } from "@/components/ui/Input"
 
@@ -75,8 +75,8 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
                                 key={cat.id}
                                 href={`/shop${cat.id !== "all" ? `?category=${cat.id}` : ""}`}
                                 className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${category === cat.id || (category === "all" && cat.id === "all")
-                                        ? "bg-gradient-to-r from-[#22c55e] to-[#06b6d4] text-[#0a0a0a]"
-                                        : "bg-[#151515] text-[#a1a1aa] border border-[#262626] hover:border-[#3a3a3a]"
+                                    ? "bg-gradient-to-r from-[#22c55e] to-[#06b6d4] text-[#0a0a0a]"
+                                    : "bg-[#151515] text-[#a1a1aa] border border-[#262626] hover:border-[#3a3a3a]"
                                     }`}
                             >
                                 {cat.name}
@@ -127,8 +127,8 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
                                         <div className="flex items-center justify-between">
                                             <span className="text-[#22c55e] font-bold text-lg">{product.price} TND</span>
                                             <span className={`text-xs px-2 py-1 rounded-full ${product.stock > 0
-                                                    ? "bg-[rgba(34,197,94,0.15)] text-[#22c55e]"
-                                                    : "bg-[rgba(239,68,68,0.15)] text-[#ef4444]"
+                                                ? "bg-[rgba(34,197,94,0.15)] text-[#22c55e]"
+                                                : "bg-[rgba(239,68,68,0.15)] text-[#ef4444]"
                                                 }`}>
                                                 {product.stock > 0 ? "In Stock" : "Out of Stock"}
                                             </span>

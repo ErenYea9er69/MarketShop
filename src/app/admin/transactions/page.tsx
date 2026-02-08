@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
 import { auth } from "@/lib/auth"
-import prisma from "@/lib/prisma"
+import { prisma } from "@/lib/prisma"
 import { Check, X, Clock, ArrowLeft, User } from "lucide-react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import { TransactionActions } from "./TransactionActions"
@@ -57,8 +57,8 @@ export default async function TransactionsPage() {
                                         <div
                                             key={tx.id}
                                             className={`p-4 rounded-xl border ${tx.status === "PENDING"
-                                                    ? "bg-[#eab308]/5 border-[#eab308]/30"
-                                                    : "bg-[#151515] border-[#262626]"
+                                                ? "bg-[#eab308]/5 border-[#eab308]/30"
+                                                : "bg-[#151515] border-[#262626]"
                                                 }`}
                                         >
                                             <div className="flex items-start justify-between gap-4">
@@ -89,8 +89,8 @@ export default async function TransactionsPage() {
                                                         ) : (
                                                             <span
                                                                 className={`text-xs px-2 py-1 rounded-full flex items-center gap-1 ${tx.status === "COMPLETED"
-                                                                        ? "bg-[rgba(34,197,94,0.15)] text-[#22c55e]"
-                                                                        : "bg-[rgba(239,68,68,0.15)] text-[#ef4444]"
+                                                                    ? "bg-[rgba(34,197,94,0.15)] text-[#22c55e]"
+                                                                    : "bg-[rgba(239,68,68,0.15)] text-[#ef4444]"
                                                                     }`}
                                                             >
                                                                 {tx.status === "COMPLETED" ? (

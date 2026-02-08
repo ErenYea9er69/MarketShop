@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
 import { auth } from "@/lib/auth"
-import prisma from "@/lib/prisma"
+import { prisma } from "@/lib/prisma"
 import {
     LayoutDashboard,
     Package,
@@ -168,8 +168,8 @@ export default async function AdminDashboard() {
                                                     <p className="font-bold text-[#22c55e]">{order.total.toFixed(2)} TND</p>
                                                     <span
                                                         className={`text-xs px-2 py-1 rounded-full ${order.status === "COMPLETED"
-                                                                ? "bg-[rgba(34,197,94,0.15)] text-[#22c55e]"
-                                                                : "bg-[rgba(234,179,8,0.15)] text-[#eab308]"
+                                                            ? "bg-[rgba(34,197,94,0.15)] text-[#22c55e]"
+                                                            : "bg-[rgba(234,179,8,0.15)] text-[#eab308]"
                                                             }`}
                                                     >
                                                         {order.status}

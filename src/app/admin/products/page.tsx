@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
 import { auth } from "@/lib/auth"
-import prisma from "@/lib/prisma"
+import { prisma } from "@/lib/prisma"
 import { ArrowLeft, Plus, Package, Pencil, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
@@ -111,8 +111,8 @@ export default async function ProductsPage() {
                                                     <td className="py-4 px-4">
                                                         <span
                                                             className={`text-xs px-2 py-1 rounded-full ${product.active
-                                                                    ? "bg-[rgba(34,197,94,0.15)] text-[#22c55e]"
-                                                                    : "bg-[rgba(239,68,68,0.15)] text-[#ef4444]"
+                                                                ? "bg-[rgba(34,197,94,0.15)] text-[#22c55e]"
+                                                                : "bg-[rgba(239,68,68,0.15)] text-[#ef4444]"
                                                                 }`}
                                                         >
                                                             {product.active ? "Active" : "Inactive"}
