@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model User {
+  id           String        @id @default(cuid())
+  email        String        @unique
+  password     String
+  name         String?
+  role         String        @default("CLIENT") // CLIENT, ADMIN
+  balance      Float         @default(0)
+  cashback     Float         @default(0)
+  orders       Order[]
+  transactions Transaction[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+}
+
+model Product {
+  id          String      @id @default(cuid())
+  name        String
+  nameAr      String?
+  nameFr      String?
+  description String?
+  descAr      String?
+  descFr      String?
+  price       Float
+  image       String?
+  category    String      @default("GIFT_CARDS") // GIFT_CARDS, SUBSCRIPTIONS, PRODUCT_KEYS, TOP_UPS
+  stock       Int         @default(0)
+  featured    Boolean     @default(false)
+  active      Boolean     @default(true)
+  items       OrderItem[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  userId    String
+  user      User        @relation(fields: [userId], references: [id])
+  total     Float
+  status    String      @default("PENDING") // PENDING, PROCESSING, COMPLETED, CANCELLED
+  items     OrderItem[]
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+}
+
+model OrderItem {
+  id           String   @id @default(cuid())
+  orderId      String
+  order        Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId    String
+  product      Product  @relation(fields: [productId], references: [id])
+  quantity     Int
+  price        Float
+  deliveryData String? // For digital product delivery (keys, codes, etc.)
+  createdAt    DateTime @default(now())
+}
+
+model Transaction {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  type      String   // DEPOSIT, PURCHASE, CASHBACK, GIFT_CARD
+  amount    Float
+  method    String?  // D17, OOREDOO, PAYPAL, CRYPTO, FLOUCI, BANK
+  status    String   @default("PENDING") // PENDING, COMPLETED, REJECTED
+  reference String? // Transaction reference or notes
+  createdAt DateTime @default(now())
+}
+
+model GiftCard {
+  id        String   @id @default(cuid())
+  code      String   @unique
+  amount    Float
+  used      Boolean  @default(false)
+  usedBy    String?
+  usedAt    DateTime?
+  createdAt DateTime @default(now())
+}
+
+model PaymentMethod {
+  id          String  @id @default(cuid())
+  name        String  @unique // D17, OOREDOO, PAYPAL, CRYPTO, FLOUCI
+  displayName String
+  displayAr   String?
+  displayFr   String?
+  icon        String?
+  details     String? // Account number, phone, wallet address, etc.
+  active      Boolean @default(true)
+}

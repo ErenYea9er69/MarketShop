@@ -1,0 +1,117 @@
+{
+    "nav": {
+        "home": "Home",
+        "shop": "Shop",
+        "giftCard": "Gift Card",
+        "contact": "Contact",
+        "faq": "FAQ",
+        "login": "Login",
+        "register": "Register",
+        "logout": "Logout",
+        "dashboard": "Dashboard",
+        "admin": "Admin"
+    },
+    "hero": {
+        "title": "Tunisia's Trusted Digital Marketplace",
+        "subtitle": "Discover digital gift cards, subscriptions, and instant services with secure checkout and 24/7 local support.",
+        "cta": "Browse Shop"
+    },
+    "shop": {
+        "title": "Digital Products",
+        "subtitle": "Top subscriptions and digital top-ups — instant delivery, secure payments, and 5% cashback on qualifying orders.",
+        "featured": "Featured",
+        "viewAll": "View All",
+        "categories": {
+            "all": "All",
+            "giftCards": "Gift Cards",
+            "subscriptions": "Subscriptions",
+            "productKeys": "Product Keys",
+            "topUps": "Top Ups"
+        },
+        "addToCart": "Add to Cart",
+        "outOfStock": "Out of Stock",
+        "inStock": "In Stock"
+    },
+    "wallet": {
+        "title": "My Wallet",
+        "balance": "Balance",
+        "cashback": "Cashback",
+        "topUp": "Top Up",
+        "history": "Transaction History",
+        "selectAmount": "Select Amount",
+        "customAmount": "Custom Amount",
+        "selectPaymentMethod": "Select Payment Method",
+        "paymentInstructions": "Payment Instructions",
+        "sendTo": "Send to",
+        "reference": "Reference",
+        "confirmPayment": "I have sent the payment",
+        "pending": "Pending",
+        "completed": "Completed",
+        "rejected": "Rejected"
+    },
+    "giftCard": {
+        "title": "Redeem Gift Card",
+        "enterCode": "Enter your code",
+        "redeem": "Redeem",
+        "success": "Gift card redeemed successfully!",
+        "invalid": "Invalid or already used code"
+    },
+    "auth": {
+        "login": "Login",
+        "register": "Register",
+        "email": "Email",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "name": "Name",
+        "forgotPassword": "Forgot Password?",
+        "noAccount": "Don't have an account?",
+        "hasAccount": "Already have an account?",
+        "signUp": "Sign Up",
+        "signIn": "Sign In"
+    },
+    "cart": {
+        "title": "Cart",
+        "empty": "Your cart is empty",
+        "total": "Total",
+        "checkout": "Checkout",
+        "remove": "Remove",
+        "quantity": "Quantity"
+    },
+    "checkout": {
+        "title": "Checkout",
+        "payWithBalance": "Pay with Balance",
+        "insufficientBalance": "Insufficient balance. Please top up.",
+        "success": "Order placed successfully!",
+        "orderSummary": "Order Summary"
+    },
+    "common": {
+        "loading": "Loading...",
+        "error": "An error occurred",
+        "success": "Success",
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "add": "Add",
+        "search": "Search",
+        "filter": "Filter",
+        "noResults": "No results found"
+    },
+    "footer": {
+        "description": "Trusted marketplace for digital gift cards, subscriptions and services in Tunisia.",
+        "company": "Company",
+        "info": "Information",
+        "services": "Services",
+        "contact": "Contact",
+        "privacy": "Privacy Policy",
+        "refund": "Refund Policy",
+        "terms": "Terms of Service"
+    },
+    "paymentMethods": {
+        "D17": "D17",
+        "OOREDOO": "Ooredoo Mobile Credit",
+        "PAYPAL": "PayPal",
+        "CRYPTO": "Crypto (USDT)",
+        "FLOUCI": "Flouci"
+    }
+}

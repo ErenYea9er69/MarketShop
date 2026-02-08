@@ -1,0 +1,117 @@
+{
+    "nav": {
+        "home": "الرئيسية",
+        "shop": "البوتيك",
+        "giftCard": "كادو",
+        "contact": "تواصل",
+        "faq": "الأسئلة",
+        "login": "تسجيل الدخول",
+        "register": "تسجيل",
+        "logout": "خروج",
+        "dashboard": "لوحة التحكم",
+        "admin": "الإدارة"
+    },
+    "hero": {
+        "title": "مارشي موثوق للمنتجات الرقمية في تونس",
+        "subtitle": "اكتشف كروت الهدايا الرقمية، الاشتراكات، والخدمات الفورية مع دفع آمن ودعم محلي 24/7.",
+        "cta": "تصفح البوتيك"
+    },
+    "shop": {
+        "title": "المنتجات الرقمية",
+        "subtitle": "أشهر الاشتراكات الرقمية والتوب أب — تسليم فوري، دفوعات آمنة، وكاشباك 5٪ على الطلبات المؤهلة.",
+        "featured": "مختار",
+        "viewAll": "شوف الكل",
+        "categories": {
+            "all": "الكل",
+            "giftCards": "كروت الهدايا",
+            "subscriptions": "الاشتراكات",
+            "productKeys": "مفاتيح المنتجات",
+            "topUps": "التعبئة"
+        },
+        "addToCart": "أضف للسلة",
+        "outOfStock": "نفذ المخزون",
+        "inStock": "متوفر"
+    },
+    "wallet": {
+        "title": "محفظتي",
+        "balance": "الرصيد",
+        "cashback": "الكاشباك",
+        "topUp": "شحن الرصيد",
+        "history": "سجل المعاملات",
+        "selectAmount": "اختر المبلغ",
+        "customAmount": "مبلغ مخصص",
+        "selectPaymentMethod": "اختر طريقة الدفع",
+        "paymentInstructions": "تعليمات الدفع",
+        "sendTo": "أرسل إلى",
+        "reference": "المرجع",
+        "confirmPayment": "لقد أرسلت المبلغ",
+        "pending": "قيد الانتظار",
+        "completed": "مكتمل",
+        "rejected": "مرفوض"
+    },
+    "giftCard": {
+        "title": "استخدم كارت الهدية",
+        "enterCode": "أدخل الكود",
+        "redeem": "استخدم",
+        "success": "تم استخدام كارت الهدية بنجاح!",
+        "invalid": "الكود غير صالح أو مستخدم من قبل"
+    },
+    "auth": {
+        "login": "تسجيل الدخول",
+        "register": "تسجيل",
+        "email": "البريد الإلكتروني",
+        "password": "كلمة المرور",
+        "confirmPassword": "تأكيد كلمة المرور",
+        "name": "الاسم",
+        "forgotPassword": "نسيت كلمة المرور؟",
+        "noAccount": "ليس لديك حساب؟",
+        "hasAccount": "لديك حساب بالفعل؟",
+        "signUp": "سجل",
+        "signIn": "ادخل"
+    },
+    "cart": {
+        "title": "السلة",
+        "empty": "سلتك فارغة",
+        "total": "المجموع",
+        "checkout": "إتمام الشراء",
+        "remove": "حذف",
+        "quantity": "الكمية"
+    },
+    "checkout": {
+        "title": "إتمام الشراء",
+        "payWithBalance": "ادفع بالرصيد",
+        "insufficientBalance": "رصيدك غير كافي. يرجى شحن الرصيد.",
+        "success": "تم الطلب بنجاح!",
+        "orderSummary": "ملخص الطلب"
+    },
+    "common": {
+        "loading": "جاري التحميل...",
+        "error": "حدث خطأ",
+        "success": "نجاح",
+        "save": "حفظ",
+        "cancel": "إلغاء",
+        "delete": "حذف",
+        "edit": "تعديل",
+        "add": "إضافة",
+        "search": "بحث",
+        "filter": "تصفية",
+        "noResults": "لا توجد نتائج"
+    },
+    "footer": {
+        "description": "مارشي موثوق للكروت الهدايا، الاشتراكات والخدمات الرقمية في تونس.",
+        "company": "الشركة",
+        "info": "معلومات",
+        "services": "الخدمات",
+        "contact": "تواصل",
+        "privacy": "سياسة الخصوصية",
+        "refund": "سياسة الاسترجاع",
+        "terms": "شروط الخدمة"
+    },
+    "paymentMethods": {
+        "D17": "D17",
+        "OOREDOO": "شحن نقال Ooredoo",
+        "PAYPAL": "باي بال",
+        "CRYPTO": "كريبتو (USDT)",
+        "FLOUCI": "فلوسي"
+    }
+}

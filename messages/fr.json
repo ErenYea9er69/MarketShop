@@ -1,0 +1,117 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "shop": "Boutique",
+        "giftCard": "Carte Cadeau",
+        "contact": "Contact",
+        "faq": "FAQ",
+        "login": "Connexion",
+        "register": "S'inscrire",
+        "logout": "Déconnexion",
+        "dashboard": "Tableau de bord",
+        "admin": "Admin"
+    },
+    "hero": {
+        "title": "Marketplace Digital de Confiance en Tunisie",
+        "subtitle": "Découvrez les cartes cadeaux numériques, abonnements et services instantanés avec paiement sécurisé et support local 24/7.",
+        "cta": "Parcourir la Boutique"
+    },
+    "shop": {
+        "title": "Produits Numériques",
+        "subtitle": "Abonnements numériques et recharges populaires — livraison instantanée, paiements sécurisés et 5% de cashback sur les commandes éligibles.",
+        "featured": "En Vedette",
+        "viewAll": "Voir Tout",
+        "categories": {
+            "all": "Tout",
+            "giftCards": "Cartes Cadeaux",
+            "subscriptions": "Abonnements",
+            "productKeys": "Clés de Produits",
+            "topUps": "Recharges"
+        },
+        "addToCart": "Ajouter au Panier",
+        "outOfStock": "Rupture de Stock",
+        "inStock": "En Stock"
+    },
+    "wallet": {
+        "title": "Mon Portefeuille",
+        "balance": "Solde",
+        "cashback": "Cashback",
+        "topUp": "Recharger",
+        "history": "Historique des Transactions",
+        "selectAmount": "Sélectionner le Montant",
+        "customAmount": "Montant Personnalisé",
+        "selectPaymentMethod": "Sélectionner le Mode de Paiement",
+        "paymentInstructions": "Instructions de Paiement",
+        "sendTo": "Envoyer à",
+        "reference": "Référence",
+        "confirmPayment": "J'ai envoyé le paiement",
+        "pending": "En Attente",
+        "completed": "Terminé",
+        "rejected": "Rejeté"
+    },
+    "giftCard": {
+        "title": "Utiliser une Carte Cadeau",
+        "enterCode": "Entrez votre code",
+        "redeem": "Utiliser",
+        "success": "Carte cadeau utilisée avec succès!",
+        "invalid": "Code invalide ou déjà utilisé"
+    },
+    "auth": {
+        "login": "Connexion",
+        "register": "S'inscrire",
+        "email": "Email",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "name": "Nom",
+        "forgotPassword": "Mot de passe oublié?",
+        "noAccount": "Vous n'avez pas de compte?",
+        "hasAccount": "Vous avez déjà un compte?",
+        "signUp": "S'inscrire",
+        "signIn": "Se connecter"
+    },
+    "cart": {
+        "title": "Panier",
+        "empty": "Votre panier est vide",
+        "total": "Total",
+        "checkout": "Passer à la Caisse",
+        "remove": "Supprimer",
+        "quantity": "Quantité"
+    },
+    "checkout": {
+        "title": "Paiement",
+        "payWithBalance": "Payer avec le Solde",
+        "insufficientBalance": "Solde insuffisant. Veuillez recharger.",
+        "success": "Commande passée avec succès!",
+        "orderSummary": "Résumé de la Commande"
+    },
+    "common": {
+        "loading": "Chargement...",
+        "error": "Une erreur s'est produite",
+        "success": "Succès",
+        "save": "Enregistrer",
+        "cancel": "Annuler",
+        "delete": "Supprimer",
+        "edit": "Modifier",
+        "add": "Ajouter",
+        "search": "Rechercher",
+        "filter": "Filtrer",
+        "noResults": "Aucun résultat trouvé"
+    },
+    "footer": {
+        "description": "Marketplace de confiance pour les cartes cadeaux, abonnements et services numériques en Tunisie.",
+        "company": "Entreprise",
+        "info": "Informations",
+        "services": "Services",
+        "contact": "Contact",
+        "privacy": "Politique de Confidentialité",
+        "refund": "Politique de Remboursement",
+        "terms": "Conditions d'Utilisation"
+    },
+    "paymentMethods": {
+        "D17": "D17",
+        "OOREDOO": "Crédit Mobile Ooredoo",
+        "PAYPAL": "PayPal",
+        "CRYPTO": "Crypto (USDT)",
+        "FLOUCI": "Flouci"
+    }
+}
