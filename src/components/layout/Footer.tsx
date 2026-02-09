@@ -1,8 +1,12 @@
+"use client"
+
 import Link from "next/link"
 import { Mail } from "lucide-react"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 
 export function Footer() {
     const currentYear = new Date().getFullYear()
+    const { t } = useLanguage()
 
     return (
         <footer className="border-t border-[#262626] bg-[#0a0a0a]">
@@ -17,22 +21,22 @@ export function Footer() {
                             <span className="text-xl font-bold text-[#fafafa]">Kwaret</span>
                         </Link>
                         <p className="text-[#71717a] text-sm leading-relaxed">
-                            Trusted marketplace for digital gift cards, subscriptions and services in Tunisia.
+                            {t("footer.description")}
                         </p>
                     </div>
 
                     {/* Company */}
                     <div>
-                        <h4 className="text-[#fafafa] font-semibold mb-4">Company</h4>
+                        <h4 className="text-[#fafafa] font-semibold mb-4">{t("footer.company")}</h4>
                         <ul className="space-y-3">
                             <li>
                                 <Link href="/#faq" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    FAQ
+                                    {t("footer.faq")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/contact" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Contact
+                                    {t("footer.contact")}
                                 </Link>
                             </li>
                         </ul>
@@ -40,26 +44,26 @@ export function Footer() {
 
                     {/* Information */}
                     <div>
-                        <h4 className="text-[#fafafa] font-semibold mb-4">Information</h4>
+                        <h4 className="text-[#fafafa] font-semibold mb-4">{t("footer.information")}</h4>
                         <ul className="space-y-3">
                             <li>
                                 <Link href="/shop" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Shop
+                                    {t("footer.shop")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/privacy" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Privacy Policy
+                                    {t("footer.privacyPolicy")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/refund" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Refund Policy
+                                    {t("footer.refundPolicy")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/terms" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Terms of Service
+                                    {t("footer.termsOfService")}
                                 </Link>
                             </li>
                         </ul>
@@ -67,26 +71,26 @@ export function Footer() {
 
                     {/* Services */}
                     <div>
-                        <h4 className="text-[#fafafa] font-semibold mb-4">Services</h4>
+                        <h4 className="text-[#fafafa] font-semibold mb-4">{t("footer.services")}</h4>
                         <ul className="space-y-3">
                             <li>
                                 <Link href="/shop?category=gift_cards" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Gift Cards
+                                    {t("footer.giftCards")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/shop?category=subscriptions" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Subscriptions
+                                    {t("footer.subscriptions")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/shop?category=product_keys" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Product Keys
+                                    {t("footer.productKeys")}
                                 </Link>
                             </li>
                             <li>
                                 <Link href="/shop?category=top_ups" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
-                                    Top Ups
+                                    {t("footer.topUps")}
                                 </Link>
                             </li>
                         </ul>
@@ -96,7 +100,7 @@ export function Footer() {
                 {/* Bottom */}
                 <div className="mt-12 pt-8 border-t border-[#262626] flex flex-col sm:flex-row items-center justify-between gap-4">
                     <p className="text-[#71717a] text-sm">
-                        © {currentYear} Kwaret. All rights reserved.
+                        © {currentYear} Kwaret. {t("footer.allRightsReserved")}
                     </p>
                     <a
                         href="mailto:support@kwaret.shop"

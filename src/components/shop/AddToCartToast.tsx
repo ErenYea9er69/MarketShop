@@ -1,11 +1,13 @@
 "use client"
 
 import { useCart } from "@/components/providers/CartProvider"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 import { ShoppingCart, X, Check } from "lucide-react"
 import Link from "next/link"
 
 export function AddToCartToast() {
     const { lastAddedItem, clearLastAddedItem, itemCount } = useCart()
+    const { t } = useLanguage()
 
     if (!lastAddedItem) return null
 
@@ -21,10 +23,10 @@ export function AddToCartToast() {
                     {/* Content */}
                     <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-foreground truncate">
-                            {lastAddedItem.name}
+                            {t(`products.${lastAddedItem.id}.name`) !== `products.${lastAddedItem.id}.name` ? t(`products.${lastAddedItem.id}.name`) : lastAddedItem.name}
                         </p>
                         <p className="text-xs text-muted-foreground mt-0.5">
-                            Added to cart
+                            {t("product.addedToCart")}
                         </p>
                     </div>
 
@@ -43,7 +45,7 @@ export function AddToCartToast() {
                     className="mt-3 flex items-center justify-center gap-2 w-full py-2 px-4 rounded-xl bg-primary/10 hover:bg-primary/20 text-primary text-sm font-medium transition-colors"
                 >
                     <ShoppingCart className="w-4 h-4" />
-                    View Cart ({itemCount})
+                    {t("product.viewCart")} ({itemCount})
                 </Link>
             </div>
         </div>

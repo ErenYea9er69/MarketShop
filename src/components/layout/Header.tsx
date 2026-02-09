@@ -6,13 +6,14 @@ import { useState, useEffect } from "react"
 import { Menu, X, ShoppingCart, LogOut, LayoutDashboard, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { useCart } from "@/components/providers/CartProvider"
+import { useLanguage, Language } from "@/components/providers/LanguageProvider"
 import { AuthModal } from "@/components/auth/AuthModal"
 
 
 const languages = [
-    { code: "en", name: "English", flag: "🇬🇧" },
-    { code: "ar", name: "العربية", flag: "🇹🇳" },
-    { code: "fr", name: "Français", flag: "🇫🇷" },
+    { code: "en" as Language, name: "English", flag: "🇬🇧" },
+    { code: "ar" as Language, name: "العربية", flag: "🇹🇳" },
+    { code: "fr" as Language, name: "Français", flag: "🇫🇷" },
 ]
 
 // Custom smooth easing for premium feel
@@ -21,9 +22,9 @@ const smoothTransition = 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)'
 export function Header() {
     const { data: session, status } = useSession()
     const { itemCount } = useCart()
+    const { language, setLanguage, t } = useLanguage()
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [langMenuOpen, setLangMenuOpen] = useState(false)
-    const [currentLang, setCurrentLang] = useState("en")
 
     // Auth Modal State
     const [authModalOpen, setAuthModalOpen] = useState(false)
@@ -47,6 +48,15 @@ export function Header() {
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
+    // Close lang menu when clicking outside
+    useEffect(() => {
+        const handleClickOutside = () => setLangMenuOpen(false)
+        if (langMenuOpen) {
+            document.addEventListener('click', handleClickOutside)
+            return () => document.removeEventListener('click', handleClickOutside)
+        }
+    }, [langMenuOpen])
+
     const openAuth = (view: "login" | "register") => {
         setAuthView(view)
         setAuthModalOpen(true)
@@ -54,11 +64,16 @@ export function Header() {
     }
 
     const navLinks = [
-        { href: "/", label: "Home" },
-        { href: "/shop", label: "Shop" },
-        { href: "/redeem", label: "Gift Cards" },
-        { href: "/contact", label: "Support" },
+        { href: "/", label: t("nav.home") },
+        { href: "/shop", label: t("nav.shop") },
+        { href: "/redeem", label: t("nav.giftCards") },
+        { href: "/contact", label: t("nav.support") },
     ]
+
+    const handleLanguageChange = (lang: Language) => {
+        setLanguage(lang)
+        setLangMenuOpen(false)
+    }
 
     return (
         <>
@@ -170,20 +185,43 @@ export function Header() {
                             transition: smoothTransition
                         }}
                     >
-                        {/* Theme Toggle Removed */}
-
                         {/* Language Selector */}
                         <div className="relative hidden sm:block">
                             <button
-                                onClick={() => setLangMenuOpen(!langMenuOpen)}
+                                onClick={(e) => {
+                                    e.stopPropagation()
+                                    setLangMenuOpen(!langMenuOpen)
+                                }}
                                 className="flex items-center justify-center rounded-full hover:bg-[#151515] text-[#a1a1aa] hover:text-[#fafafa] transition-colors"
                                 style={{
                                     width: isPillMode ? '32px' : '40px',
                                     height: isPillMode ? '32px' : '40px',
                                 }}
                             >
-                                <span className="text-lg">{languages.find(l => l.code === currentLang)?.flag}</span>
+                                <span className="text-lg">{languages.find(l => l.code === language)?.flag}</span>
                             </button>
+
+                            {/* Language Dropdown */}
+                            {langMenuOpen && (
+                                <div className="absolute top-full right-0 mt-2 py-2 bg-[#0a0a0a]/95 backdrop-blur-xl border border-[#262626] rounded-xl shadow-2xl min-w-[140px] z-50">
+                                    {languages.map((lang) => (
+                                        <button
+                                            key={lang.code}
+                                            onClick={(e) => {
+                                                e.stopPropagation()
+                                                handleLanguageChange(lang.code)
+                                            }}
+                                            className={`w-full flex items-center gap-3 px-4 py-2 text-sm transition-colors ${language === lang.code
+                                                ? 'text-[#EAB308] bg-[#EAB308]/10'
+                                                : 'text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#151515]'
+                                                }`}
+                                        >
+                                            <span className="text-lg">{lang.flag}</span>
+                                            <span>{lang.name}</span>
+                                        </button>
+                                    ))}
+                                </div>
+                            )}
                         </div>
 
                         {/* Cart */}
@@ -232,7 +270,7 @@ export function Header() {
                                         transition: smoothTransition
                                     }}
                                 >
-                                    Get Started
+                                    {t("header.getStarted")}
                                 </Button>
                             )}
                         </div>
@@ -265,17 +303,37 @@ export function Header() {
                                     {link.label}
                                 </Link>
                             ))}
+
+                            {/* Mobile Language Selector */}
+                            <div className="px-4 py-3 flex items-center gap-3">
+                                {languages.map((lang) => (
+                                    <button
+                                        key={lang.code}
+                                        onClick={() => {
+                                            handleLanguageChange(lang.code)
+                                            setMobileMenuOpen(false)
+                                        }}
+                                        className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm transition-colors ${language === lang.code
+                                            ? 'bg-[#EAB308]/20 text-[#EAB308]'
+                                            : 'text-[#a1a1aa] hover:bg-[#151515]'
+                                            }`}
+                                    >
+                                        <span>{lang.flag}</span>
+                                    </button>
+                                ))}
+                            </div>
+
                             <div className="h-px bg-[#262626] my-2" />
                             {!session ? (
                                 <div className="grid grid-cols-2 gap-3">
-                                    <Button variant="secondary" className="w-full justify-center" onClick={() => openAuth("login")}>Log in</Button>
-                                    <Button className="w-full justify-center" onClick={() => openAuth("register")}>Sign Up</Button>
+                                    <Button variant="secondary" className="w-full justify-center" onClick={() => openAuth("login")}>{t("header.login")}</Button>
+                                    <Button className="w-full justify-center" onClick={() => openAuth("register")}>{t("header.signUp")}</Button>
                                 </div>
                             ) : (
                                 <Link href="/dashboard" onClick={() => setMobileMenuOpen(false)}>
                                     <Button className="w-full justify-center gap-2">
                                         <LayoutDashboard className="w-4 h-4" />
-                                        Dashboard
+                                        {t("header.dashboard")}
                                     </Button>
                                 </Link>
                             )}

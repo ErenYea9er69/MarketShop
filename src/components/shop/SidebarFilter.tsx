@@ -4,18 +4,20 @@ import { useState, useEffect } from "react"
 import Link from "next/link"
 import { useSearchParams, useRouter } from "next/navigation"
 import { SlidersHorizontal, ChevronDown, Check } from "lucide-react"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 
 const categories = [
-    { id: "all", name: "All Products" },
-    { id: "GIFT_CARDS", name: "Gift Cards" },
-    { id: "SUBSCRIPTIONS", name: "Subscriptions" },
-    { id: "PRODUCT_KEYS", name: "Product Keys" },
-    { id: "TOP_UPS", name: "Top Ups" },
+    { id: "all", name: "all" },
+    { id: "GIFT_CARDS", name: "GIFT_CARDS" },
+    { id: "SUBSCRIPTIONS", name: "SUBSCRIPTIONS" },
+    { id: "PRODUCT_KEYS", name: "PRODUCT_KEYS" },
+    { id: "TOP_UPS", name: "TOP_UPS" },
 ]
 
 export function SidebarFilter() {
     const searchParams = useSearchParams()
     const router = useRouter()
+    const { t } = useLanguage()
 
     // Get initial state from URL or default
     const currentCategory = searchParams.get("category") || "all"
@@ -44,14 +46,14 @@ export function SidebarFilter() {
     return (
         <div className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-2xl p-6 sticky top-32">
             <div className="flex items-center justify-between mb-6">
-                <h3 className="font-bold text-lg">Filters</h3>
+                <h3 className="font-bold text-lg">{t("filters.title")}</h3>
                 <SlidersHorizontal className="w-4 h-4 text-muted-foreground" />
             </div>
 
             {/* Price Filter */}
             <div className="mb-8">
                 <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-primary">Max Price</span>
+                    <span className="text-sm font-medium text-primary">{t("filters.maxPrice")}</span>
                     <ChevronDown className="w-4 h-4 text-muted-foreground rotate-180" />
                 </div>
 
@@ -77,7 +79,7 @@ export function SidebarFilter() {
             {/* Categories Filter */}
             <div>
                 <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-medium text-primary">Categories</span>
+                    <span className="text-sm font-medium text-primary">{t("filters.categories")}</span>
                     <ChevronDown className="w-4 h-4 text-muted-foreground rotate-180" />
                 </div>
 
@@ -107,7 +109,7 @@ export function SidebarFilter() {
                                     `}>
                                         {isActive && <Check className="w-3 h-3" />}
                                     </div>
-                                    <span className="text-sm">{cat.name}</span>
+                                    <span className="text-sm">{t(`categories.${cat.name}`)}</span>
                                 </div>
                             </Link>
                         )

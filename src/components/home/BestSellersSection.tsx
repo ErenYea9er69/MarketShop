@@ -3,8 +3,11 @@
 import Link from "next/link"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/Button"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 
 export function BestSellersSection() {
+    const { t } = useLanguage()
+
     return (
         <section className="pt-24 pb-32 relative overflow-hidden bg-background">
             {/* Background Elements */}
@@ -22,10 +25,10 @@ export function BestSellersSection() {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
                     <div className="relative">
                         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-2 relative z-10">
-                            Selected for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">You</span>
+                            {t("bestSellers.title")} <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">{t("bestSellers.titleHighlight")}</span>
                         </h2>
                         <p className="text-muted-foreground text-base max-w-md">
-                            Top rated digital products chosen by our community this week.
+                            {t("bestSellers.subtitle")}
                         </p>
                     </div>
 
@@ -34,7 +37,7 @@ export function BestSellersSection() {
                             variant="ghost"
                             className="rounded-full px-6 h-10 text-foreground hover:bg-white/5 border border-white/10 hover:border-primary/20 transition-all group"
                         >
-                            View Collection
+                            {t("bestSellers.viewCollection")}
                             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform text-primary" />
                         </Button>
                     </Link>
@@ -45,8 +48,7 @@ export function BestSellersSection() {
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         {[
                             {
-                                name: "Netflix Premium",
-                                type: "4K UHD • Private",
+                                id: "netflix",
                                 price: "25.00",
                                 currency: "TND",
                                 image: "https://upload.wikimedia.org/wikipedia/commons/0/08/Netflix_2015_logo.svg",
@@ -56,8 +58,7 @@ export function BestSellersSection() {
                                 glowInfo: "shadow-[0_0_30px_-5px_rgba(220,38,38,0.3)]"
                             },
                             {
-                                name: "Spotify Premium",
-                                type: "Individual • Stable",
+                                id: "spotify",
                                 price: "15.00",
                                 currency: "TND",
                                 image: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
@@ -67,8 +68,7 @@ export function BestSellersSection() {
                                 glowInfo: "shadow-[0_0_30px_-5px_rgba(234,179,8,0.3)]"
                             },
                             {
-                                name: "ChatGPT Plus",
-                                type: "GPT-4 • DALL-E 3",
+                                id: "chatgpt",
                                 price: "65.00",
                                 currency: "TND",
                                 image: "https://upload.wikimedia.org/wikipedia/commons/0/04/ChatGPT_logo.svg",
@@ -90,14 +90,14 @@ export function BestSellersSection() {
                                     {/* Floating Icon with Glow */}
                                     <div className={`w-20 h-20 rounded-2xl bg-black/20 border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-500 ${product.glowInfo} backdrop-blur-md`}>
                                         <div className="absolute inset-0 rounded-2xl bg-white/5 blur-xl opacity-0 group-hover:opacity-50 transition-opacity" />
-                                        <img src={product.image} alt={product.name} className="w-10 h-10 object-contain relative z-10" />
+                                        <img src={product.image} alt={t(`bestSellers.products.${product.id}.name`)} className="w-10 h-10 object-contain relative z-10" />
                                     </div>
 
                                     {/* Content */}
                                     <div className="flex-1 space-y-2">
-                                        <div className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">{product.type}</div>
+                                        <div className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">{t(`bestSellers.products.${product.id}.type`)}</div>
                                         <h3 className="text-xl font-bold text-foreground group-hover:text-white transition-colors">
-                                            {product.name}
+                                            {t(`bestSellers.products.${product.id}.name`)}
                                         </h3>
                                     </div>
 
@@ -110,7 +110,7 @@ export function BestSellersSection() {
 
                                         <Button className={`w-full h-12 rounded-xl bg-white/5 border border-white/10 text-foreground font-medium backdrop-blur-sm transition-all duration-300 ${product.buttonGradient} hover:border-transparent hover:text-white hover:shadow-lg relative overflow-hidden group/btn text-sm`}>
                                             <span className="relative z-10 flex items-center justify-center gap-2">
-                                                Purchase Now
+                                                {t("bestSellers.purchaseNow")}
                                                 <ArrowRight className="w-4 h-4 -translate-x-1 opacity-0 group-hover/btn:translate-x-0 group-hover/btn:opacity-100 transition-all" />
                                             </span>
                                         </Button>

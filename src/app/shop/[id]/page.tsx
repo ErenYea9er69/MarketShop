@@ -6,6 +6,7 @@ import { ArrowLeft, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { dummyProducts } from "@/lib/dummy-data"
 import { useCart } from "@/components/providers/CartProvider"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 import { use, useState } from "react"
 
 interface ProductPageProps {
@@ -16,6 +17,7 @@ export default function ProductPage({ params }: ProductPageProps) {
     const { id } = use(params)
     const product = dummyProducts.find((p) => p.id === id)
     const { addItem } = useCart()
+    const { t } = useLanguage()
     const [isAdding, setIsAdding] = useState(false)
 
     if (!product) {
@@ -44,7 +46,7 @@ export default function ProductPage({ params }: ProductPageProps) {
             <div className="container w-[75%] max-w-[1400px] mx-auto px-4 relative z-10">
                 <Link href="/shop" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8 group">
                     <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    Back to Shop
+                    {t("product.backToShop")}
                 </Link>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
@@ -70,13 +72,13 @@ export default function ProductPage({ params }: ProductPageProps) {
                     <div className="p-8 rounded-[2.5rem] bg-card/50 backdrop-blur-xl border border-border/50 space-y-8 sticky top-32">
                         {/* Title */}
                         <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
-                            {product.name}
+                            {t(`products.${product.id}.name`)}
                         </h1>
 
                         {/* Price & Status Section */}
                         <div className="flex items-start justify-between">
                             <div>
-                                <p className="text-sm text-muted-foreground font-medium mb-1">Total Price</p>
+                                <p className="text-sm text-muted-foreground font-medium mb-1">{t("product.totalPrice")}</p>
                                 <div className="flex items-baseline gap-1">
                                     <span className="text-5xl font-bold font-mono">{product.price.toFixed(2)}</span>
                                     <span className="text-xl text-muted-foreground">TND</span>
@@ -90,7 +92,7 @@ export default function ProductPage({ params }: ProductPageProps) {
                                     ? "bg-emerald-500/10 text-emerald-500"
                                     : "bg-red-500/10 text-red-500"
                                     }`}>
-                                    {product.stock > 0 ? "In Stock" : "Sold Out"}
+                                    {product.stock > 0 ? t("product.inStock") : t("product.soldOut")}
                                 </span>
                             </div>
                         </div>
@@ -104,21 +106,21 @@ export default function ProductPage({ params }: ProductPageProps) {
                             onClick={handleAddToCart}
                         >
                             <ShoppingCart className={`w-5 h-5 transition-transform ${isAdding ? "scale-125" : ""}`} />
-                            {product.stock > 0 ? "Add to Cart" : "Out of Stock"}
+                            {product.stock > 0 ? t("product.addToCart") : t("product.outOfStock")}
                         </Button>
 
                         {/* Overview Section */}
                         <div>
-                            <h3 className="font-bold text-lg mb-2">Overview</h3>
+                            <h3 className="font-bold text-lg mb-2">{t("product.overview")}</h3>
                             <p className="text-muted-foreground leading-relaxed">
-                                {product.description}
+                                {t(`products.${product.id}.description`)}
                             </p>
                         </div>
 
                         {/* Features List */}
                         {product.features && (
                             <div className="pt-6 border-t border-border/50">
-                                <h3 className="font-bold text-lg mb-4">Key Features</h3>
+                                <h3 className="font-bold text-lg mb-4">{t("product.keyFeatures")}</h3>
                                 <ul className="space-y-3">
                                     {product.features.map((feature, i) => (
                                         <li key={i} className="flex items-start gap-3 text-muted-foreground">

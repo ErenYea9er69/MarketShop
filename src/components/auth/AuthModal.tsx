@@ -7,6 +7,8 @@ import { X, Mail, Lock, User, ArrowRight, Eye, EyeOff, Github } from "lucide-rea
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 
+import { useLanguage } from "@/components/providers/LanguageProvider"
+
 interface AuthModalProps {
     isOpen: boolean
     onClose: () => void
@@ -15,6 +17,7 @@ interface AuthModalProps {
 
 export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalProps) {
     const router = useRouter()
+    const { t } = useLanguage()
     const [view, setView] = useState<"login" | "register">(defaultView)
     const [isLoading, setIsLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
@@ -115,12 +118,12 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                     <div className="max-w-sm mx-auto w-full">
                         <div className="mb-8 text-center lg:text-left">
                             <h2 className="text-3xl font-bold mb-2 text-[#fafafa]">
-                                {view === "login" ? "Welcome Back" : "Create Account"}
+                                {view === "login" ? t("auth.welcomeBack") : t("auth.createAccount")}
                             </h2>
                             <p className="text-[#a1a1aa]">
                                 {view === "login"
-                                    ? "Enter your details to access your wallet"
-                                    : "Join Tunisia's most trusted marketplace"}
+                                    ? t("auth.enterDetails")
+                                    : t("auth.joinMarketplace")}
                             </p>
                         </div>
 
@@ -144,7 +147,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                     <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.21.81-.63z" />
                                     <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
                                 </svg>
-                                Continue with Google
+                                {t("auth.continueGoogle")}
                             </Button>
 
                             <div className="relative">
@@ -152,7 +155,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                     <span className="w-full border-t border-[#262626]" />
                                 </div>
                                 <div className="relative flex justify-center text-xs uppercase">
-                                    <span className="bg-[#0a0a0a] px-2 text-[#71717a]">Or continue with email</span>
+                                    <span className="bg-[#0a0a0a] px-2 text-[#71717a]">{t("auth.orContinueEmail")}</span>
                                 </div>
                             </div>
 
@@ -161,7 +164,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                     <div className="relative group">
                                         <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#22c55e] transition-colors" />
                                         <Input
-                                            placeholder="Full Name"
+                                            placeholder={t("auth.fullName")}
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
                                             className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#22c55e] transition-all"
@@ -174,7 +177,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#22c55e] transition-colors" />
                                     <Input
                                         type="email"
-                                        placeholder="Email Address"
+                                        placeholder={t("auth.email")}
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
                                         className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#22c55e] transition-all"
@@ -186,7 +189,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                     <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#22c55e] transition-colors" />
                                     <Input
                                         type={showPassword ? "text" : "password"}
-                                        placeholder="Password"
+                                        placeholder={t("auth.password")}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
                                         className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#22c55e] transition-all"
@@ -206,7 +209,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                         <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#22c55e] transition-colors" />
                                         <Input
                                             type={showPassword ? "text" : "password"}
-                                            placeholder="Confirm Password"
+                                            placeholder={t("auth.confirmPassword")}
                                             value={confirmPassword}
                                             onChange={(e) => setConfirmPassword(e.target.value)}
                                             className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#22c55e] transition-all"
@@ -223,11 +226,11 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                     {isLoading ? (
                                         <span className="flex items-center gap-2">
                                             <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
-                                            Processing...
+                                            {t("auth.processing")}
                                         </span>
                                     ) : (
                                         <span className="flex items-center justify-center gap-2">
-                                            {view === "login" ? "Sign In" : "Create Account"}
+                                            {view === "login" ? t("auth.signIn") : t("auth.createAccount")}
                                             <ArrowRight className="w-5 h-5" />
                                         </span>
                                     )}
@@ -236,7 +239,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
 
                             <div className="mt-8 text-center space-y-4">
                                 <p className="text-[#71717a] text-sm">
-                                    {view === "login" ? "Don't have an account?" : "Already have an account?"}{" "}
+                                    {view === "login" ? t("auth.dontHaveAccount") : t("auth.alreadyHaveAccount")}{" "}
                                     <button
                                         onClick={() => {
                                             setView(view === "login" ? "register" : "login")
@@ -244,7 +247,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                         }}
                                         className="text-[#22c55e] hover:text-[#4ade80] font-semibold hover:underline transition-colors"
                                     >
-                                        {view === "login" ? "Sign up now" : "Sign in"}
+                                        {view === "login" ? t("auth.signUpNow") : t("auth.signIn")}
                                     </button>
                                 </p>
                             </div>
@@ -265,7 +268,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                 <span className="text-xl font-bold text-black">K</span>
                             </div>
                             <div className="px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-white/80">
-                                Protected
+                                {t("auth.protected")}
                             </div>
                         </div>
 
@@ -275,9 +278,9 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                             <div className="h-24 w-full bg-gradient-to-br from-[#22c55e]/20 to-[#06b6d4]/20 rounded-2xl border border-white/5 backdrop-blur-md flex items-center justify-center">
                                 <div className="text-center">
                                     <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#22c55e] to-[#06b6d4]">
-                                        Secure
+                                        {t("auth.secure")}
                                     </div>
-                                    <div className="text-xs text-white/50">Encrypted Transactions</div>
+                                    <div className="text-xs text-white/50">{t("auth.encrypted")}</div>
                                 </div>
                             </div>
                         </div>

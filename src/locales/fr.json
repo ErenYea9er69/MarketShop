@@ -1,0 +1,185 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "shop": "Boutique",
+        "giftCards": "Cartes Cadeaux",
+        "support": "Support"
+    },
+    "header": {
+        "getStarted": "Commencer",
+        "login": "Connexion",
+        "signUp": "S'inscrire",
+        "dashboard": "Tableau de bord"
+    },
+    "hero": {
+        "badge": "Le Marketplace #1 en Tunisie",
+        "heading1": "Produits Numériques.",
+        "heading2": "Livraison Instantanée.",
+        "subheading": "Votre destination unique pour les cartes cadeaux, les recharges de jeux et les abonnements logiciels. Paiements sécurisés via D17, Flouci et virement bancaire.",
+        "cta": "Commencer vos achats"
+    },
+    "bestSellers": {
+        "title": "Sélectionné pour",
+        "titleHighlight": "Vous",
+        "subtitle": "Produits numériques les mieux notés choisis par notre communauté cette semaine.",
+        "viewCollection": "Voir la collection",
+        "purchaseNow": "Acheter maintenant",
+        "products": {
+            "netflix": {
+                "name": "Netflix Premium",
+                "type": "4K UHD • Privé"
+            },
+            "spotify": {
+                "name": "Spotify Premium",
+                "type": "Individuel • Stable"
+            },
+            "chatgpt": {
+                "name": "ChatGPT Plus",
+                "type": "GPT-4 • DALL-E 3"
+            }
+        }
+    },
+    "faq": {
+        "badge": "Support",
+        "title1": "Des questions ?",
+        "title2": "Nous avons les réponses.",
+        "subtitle": "Trouvez tout ce que vous devez savoir sur nos services. Vous ne trouvez pas ce que vous cherchez ?",
+        "liveChat": "Chat en direct",
+        "available247": "Disponible 24/7",
+        "emailUs": "Envoyez-nous un email",
+        "responseTime": "Réponse < 2h",
+        "contactSupport": "Contacter le support",
+        "questions": [
+            {
+                "question": "Comment recevoir mon code numérique ?",
+                "answer": "Les codes sont livrés instantanément à votre email et compte tableau de bord immédiatement après confirmation du paiement. Pas de temps d'attente !"
+            },
+            {
+                "question": "Est-il sûr d'acheter chez Kwaret ?",
+                "answer": "Absolument. Nous utilisons des passerelles de paiement tierces sécurisées (Flouci, D17) et ne stockons jamais vos informations de paiement sensibles. Nous avons servi plus de 10 000 clients satisfaits."
+            },
+            {
+                "question": "Puis-je obtenir un remboursement si le code ne fonctionne pas ?",
+                "answer": "Dans le rare cas d'un code invalide, notre équipe support vérifiera avec le fournisseur et émettra un remplacement ou remboursement immédiatement. Les produits numériques ne sont autrement pas remboursables une fois consultés."
+            },
+            {
+                "question": "Proposez-vous des prix de gros ?",
+                "answer": "Oui ! Si vous êtes revendeur ou propriétaire de cyber café, veuillez contacter notre équipe support pour demander un compte Marchand avec des tarifs spéciaux."
+            },
+            {
+                "question": "Les codes numériques sont-ils verrouillés par région ?",
+                "answer": "Oui, la plupart des codes sont spécifiques à une région (ex: Global, US, EU). Veuillez vérifier attentivement la description du produit avant d'acheter pour vous assurer qu'il fonctionne pour la région de votre compte."
+            }
+        ]
+    },
+    "payment": {
+        "title": "Méthodes de paiement",
+        "subtitle": "Nous acceptons diverses options de paiement locales et internationales pour votre commodité."
+    },
+    "footer": {
+        "description": "Marketplace de confiance pour les cartes cadeaux numériques, abonnements et services en Tunisie.",
+        "company": "Entreprise",
+        "faq": "FAQ",
+        "contact": "Contact",
+        "information": "Information",
+        "shop": "Boutique",
+        "privacyPolicy": "Politique de confidentialité",
+        "refundPolicy": "Politique de remboursement",
+        "termsOfService": "Conditions d'utilisation",
+        "services": "Services",
+        "giftCards": "Cartes Cadeaux",
+        "subscriptions": "Abonnements",
+        "productKeys": "Clés de produit",
+        "topUps": "Recharges",
+        "allRightsReserved": "Tous droits réservés."
+    },
+    "cart": {
+        "title": "Panier",
+        "empty": "Votre panier est vide",
+        "emptySubtitle": "Ajoutez des produits pour commencer",
+        "browseShop": "Parcourir la boutique",
+        "continueShopping": "Continuer vos achats",
+        "clearCart": "Vider le panier",
+        "orderSummary": "Récapitulatif",
+        "subtotal": "Sous-total",
+        "cashback": "Cashback (5%)",
+        "total": "Total",
+        "checkout": "Payer",
+        "paymentNote": "Le paiement sera déduit du solde de votre portefeuille"
+    },
+    "shop": {
+        "title": "Boutique",
+        "searchPlaceholder": "Rechercher des produits...",
+        "categories": "Catégories",
+        "allProducts": "Tous les produits",
+        "maxPrice": "Prix max",
+        "noProducts": "Aucun produit trouvé"
+    },
+    "product": {
+        "backToShop": "Retour à la boutique",
+        "totalPrice": "Prix total",
+        "inStock": "En stock",
+        "soldOut": "Épuisé",
+        "addToCart": "Ajouter au panier",
+        "outOfStock": "Rupture de stock",
+        "overview": "Aperçu",
+        "keyFeatures": "Caractéristiques clés",
+        "addedToCart": "Ajouté au panier",
+        "viewCart": "Voir le panier"
+    },
+    "filters": {
+        "title": "Filtres",
+        "maxPrice": "Prix Max",
+        "price": "Prix",
+        "categories": "Catégories"
+    },
+    "categories": {
+        "all": "Tous les produits",
+        "GIFT_CARDS": "Cartes Cadeaux",
+        "SUBSCRIPTIONS": "Abonnements",
+        "PRODUCT_KEYS": "Clés de produit",
+        "TOP_UPS": "Recharges"
+    },
+    "auth": {
+        "welcomeBack": "Bon retour",
+        "createAccount": "Créer un compte",
+        "enterDetails": "Entrez vos coordonnées pour accéder à votre portefeuille",
+        "joinMarketplace": "Rejoignez le marketplace le plus fiable de Tunisie",
+        "fullName": "Nom complet",
+        "email": "Adresse email",
+        "password": "Mot de passe",
+        "confirmPassword": "Confirmer le mot de passe",
+        "continueGoogle": "Continuer avec Google",
+        "orContinueEmail": "Ou continuer avec email",
+        "signIn": "Se connecter",
+        "processing": "Traitement...",
+        "dontHaveAccount": "Vous n'avez pas de compte ?",
+        "alreadyHaveAccount": "Vous avez déjà un compte ?",
+        "signUpNow": "S'inscrire maintenant",
+        "secure": "Sécurisé",
+        "protected": "Protégé",
+        "encrypted": "Transactions chiffrées"
+    },
+    "products": {
+        "1": {
+            "name": "Carte Cadeau Premium",
+            "description": "Le cadeau parfait pour tout le monde. Valable pour tous les articles du magasin. Cette carte cadeau numérique peut être utilisée pour acheter n'importe quel produit dans notre magasin, y compris les abonnements, les clés de jeu et les licences de logiciels."
+        },
+        "2": {
+            "name": "Abonnement Streaming (1 Mois)",
+            "description": "Accédez à des milliers de films et d'émissions de télévision pendant 30 jours. Profitez d'un streaming sans publicité en qualité 4K HDR sur jusqu'à 4 appareils simultanément."
+        },
+        "3": {
+            "name": "Clé de Jeu : Cyber Adventure",
+            "description": "Vivez le futur dans ce RPG en monde ouvert. Naviguez dans une métropole dystopique, personnalisez votre personnage avec des améliorations cybernétiques et façonnez l'histoire à travers vos choix."
+        },
+        "4": {
+            "name": "Recharge Mobile 10$",
+            "description": "Crédit instantané pour votre téléphone mobile. Fonctionne avec tous les principaux opérateurs. Restez connecté avec vos amis et votre famille."
+        },
+        "5": {
+            "name": "Licence Logiciel Pro",
+            "description": "Licence à vie pour un logiciel de montage professionnel. Comprend toutes les futures mises à jour et un support premium."
+        }
+    }
+}

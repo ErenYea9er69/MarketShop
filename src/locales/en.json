@@ -1,0 +1,185 @@
+{
+    "nav": {
+        "home": "Home",
+        "shop": "Shop",
+        "giftCards": "Gift Cards",
+        "support": "Support"
+    },
+    "header": {
+        "getStarted": "Get Started",
+        "login": "Log in",
+        "signUp": "Sign Up",
+        "dashboard": "Dashboard"
+    },
+    "hero": {
+        "badge": "The #1 Marketplace in Tunisia",
+        "heading1": "Digital Products.",
+        "heading2": "Instant Delivery.",
+        "subheading": "Your one-stop shop for Gift Cards, Game Top-ups, and Software Subscriptions. Secure payments via D17, Flouci, and Bank Transfer.",
+        "cta": "Start Shopping"
+    },
+    "bestSellers": {
+        "title": "Selected for",
+        "titleHighlight": "You",
+        "subtitle": "Top rated digital products chosen by our community this week.",
+        "viewCollection": "View Collection",
+        "purchaseNow": "Purchase Now",
+        "products": {
+            "netflix": {
+                "name": "Netflix Premium",
+                "type": "4K UHD • Private"
+            },
+            "spotify": {
+                "name": "Spotify Premium",
+                "type": "Individual • Stable"
+            },
+            "chatgpt": {
+                "name": "ChatGPT Plus",
+                "type": "GPT-4 • DALL-E 3"
+            }
+        }
+    },
+    "faq": {
+        "badge": "Support",
+        "title1": "Have Questions?",
+        "title2": "We have answers.",
+        "subtitle": "Find everything you need to know about our services. Can't find what you're looking for?",
+        "liveChat": "Live Chat",
+        "available247": "Available 24/7",
+        "emailUs": "Email Us",
+        "responseTime": "Response < 2h",
+        "contactSupport": "Contact Support",
+        "questions": [
+            {
+                "question": "How do I receive my digital code?",
+                "answer": "Codes are delivered instantly to your email and dashboard account immediately after your payment is confirmed. No waiting times!"
+            },
+            {
+                "question": "Is it safe to buy from Kwaret?",
+                "answer": "Absolutely. We use secure 3rd-party payment gateways (Flouci, D17) and never store your sensitive payment information. We have served over 10,000 happy customers."
+            },
+            {
+                "question": "Can I get a refund if the code doesn't work?",
+                "answer": "In the rare case of an invalid code, our support team will verify with the provider and issue a replacement or refund immediately. Digital products are otherwise non-refundable once viewed."
+            },
+            {
+                "question": "Do you offer wholesale prices?",
+                "answer": "Yes! If you are a reseller or cyber café owner, please contact our support team to apply for a Merchant account with special rates."
+            },
+            {
+                "question": "Are the digital codes region-locked?",
+                "answer": "Yes, most codes are region-specific (e.g., Global, US, EU). Please check the product description carefully before purchasing to ensure it works for your account region."
+            }
+        ]
+    },
+    "payment": {
+        "title": "Payment Methods",
+        "subtitle": "We accept various local and international payment options for your convenience."
+    },
+    "footer": {
+        "description": "Trusted marketplace for digital gift cards, subscriptions and services in Tunisia.",
+        "company": "Company",
+        "faq": "FAQ",
+        "contact": "Contact",
+        "information": "Information",
+        "shop": "Shop",
+        "privacyPolicy": "Privacy Policy",
+        "refundPolicy": "Refund Policy",
+        "termsOfService": "Terms of Service",
+        "services": "Services",
+        "giftCards": "Gift Cards",
+        "subscriptions": "Subscriptions",
+        "productKeys": "Product Keys",
+        "topUps": "Top Ups",
+        "allRightsReserved": "All rights reserved."
+    },
+    "cart": {
+        "title": "Shopping Cart",
+        "empty": "Your cart is empty",
+        "emptySubtitle": "Add some products to get started",
+        "browseShop": "Browse Shop",
+        "continueShopping": "Continue Shopping",
+        "clearCart": "Clear cart",
+        "orderSummary": "Order Summary",
+        "subtotal": "Subtotal",
+        "cashback": "Cashback (5%)",
+        "total": "Total",
+        "checkout": "Checkout",
+        "paymentNote": "Payment will be deducted from your wallet balance"
+    },
+    "shop": {
+        "title": "Shop",
+        "searchPlaceholder": "Search products...",
+        "categories": "Categories",
+        "allProducts": "All Products",
+        "maxPrice": "Max Price",
+        "noProducts": "No products found"
+    },
+    "product": {
+        "backToShop": "Back to Shop",
+        "totalPrice": "Total Price",
+        "inStock": "In Stock",
+        "soldOut": "Sold Out",
+        "addToCart": "Add to Cart",
+        "outOfStock": "Out of Stock",
+        "overview": "Overview",
+        "keyFeatures": "Key Features",
+        "addedToCart": "Added to cart",
+        "viewCart": "View Cart"
+    },
+    "filters": {
+        "title": "Filters",
+        "maxPrice": "Max Price",
+        "price": "Price",
+        "categories": "Categories"
+    },
+    "categories": {
+        "all": "All Products",
+        "GIFT_CARDS": "Gift Cards",
+        "SUBSCRIPTIONS": "Subscriptions",
+        "PRODUCT_KEYS": "Product Keys",
+        "TOP_UPS": "Top Ups"
+    },
+    "auth": {
+        "welcomeBack": "Welcome Back",
+        "createAccount": "Create Account",
+        "enterDetails": "Enter your details to access your wallet",
+        "joinMarketplace": "Join Tunisia's most trusted marketplace",
+        "fullName": "Full Name",
+        "email": "Email Address",
+        "password": "Password",
+        "confirmPassword": "Confirm Password",
+        "continueGoogle": "Continue with Google",
+        "orContinueEmail": "Or continue with email",
+        "signIn": "Sign In",
+        "processing": "Processing...",
+        "dontHaveAccount": "Don't have an account?",
+        "alreadyHaveAccount": "Already have an account?",
+        "signUpNow": "Sign up now",
+        "secure": "Secure",
+        "protected": "Protected",
+        "encrypted": "Encrypted Transactions"
+    },
+    "products": {
+        "1": {
+            "name": "Premium Gift Card",
+            "description": "The perfect gift for anyone. Valid for all store items. This digital gift card can be used to purchase any product in our store, including subscriptions, game keys, and software licenses."
+        },
+        "2": {
+            "name": "Streaming Subscription (1 Month)",
+            "description": "Access thousands of movies and TV shows for 30 days. Enjoy ad-free streaming in 4K HDR quality on up to 4 devices simultaneously."
+        },
+        "3": {
+            "name": "Game Key: Cyber Adventure",
+            "description": "Experience the future in this open-world RPG. Navigate a dystopian metropolis, customize your character with cybernetic enhancements, and shape the story through your choices."
+        },
+        "4": {
+            "name": "Mobile Top-Up $10",
+            "description": "Instant credit for your mobile phone. Works with all major carriers. Stay connected with friends and family."
+        },
+        "5": {
+            "name": "Pro Software License",
+            "description": "Lifetime license for professional editing software. Includes all future updates and premium support."
+        }
+    }
+}

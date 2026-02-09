@@ -4,9 +4,11 @@ import Link from "next/link"
 import { ShoppingCart, Trash2, Plus, Minus, ArrowRight, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { useCart } from "@/components/providers/CartProvider"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 
 export default function CartPage() {
     const { items, removeItem, updateQuantity, total, clearCart } = useCart()
+    const { t } = useLanguage()
 
     if (items.length === 0) {
         return (
@@ -22,11 +24,11 @@ export default function CartPage() {
                         <div className="w-24 h-24 mx-auto mb-8 rounded-[2rem] bg-card/50 backdrop-blur-xl border border-border/50 flex items-center justify-center">
                             <ShoppingCart className="w-12 h-12 text-muted-foreground" />
                         </div>
-                        <h1 className="text-3xl font-bold mb-4">Your cart is empty</h1>
-                        <p className="text-muted-foreground mb-8">Add some products to get started</p>
+                        <h1 className="text-3xl font-bold mb-4">{t("cart.empty")}</h1>
+                        <p className="text-muted-foreground mb-8">{t("cart.emptySubtitle")}</p>
                         <Link href="/shop">
                             <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
-                                Browse Shop
+                                {t("cart.browseShop")}
                                 <ArrowRight className="w-4 h-4 ml-2" />
                             </Button>
                         </Link>
@@ -47,11 +49,11 @@ export default function CartPage() {
             <div className="container w-[75%] max-w-[1400px] mx-auto px-4 relative z-10">
                 <Link href="/shop" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8 group">
                     <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                    Continue Shopping
+                    {t("cart.continueShopping")}
                 </Link>
 
                 <h1 className="text-4xl font-bold mb-8">
-                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">Shopping Cart</span>
+                    <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">{t("cart.title")}</span>
                 </h1>
 
                 <div className="grid lg:grid-cols-3 gap-8">
@@ -74,7 +76,9 @@ export default function CartPage() {
 
                                     {/* Product Details */}
                                     <div className="flex-1 min-w-0">
-                                        <h3 className="font-semibold text-lg text-foreground truncate">{item.name}</h3>
+                                        <h3 className="font-semibold text-lg text-foreground truncate">
+                                            {t(`products.${item.id}.name`) !== `products.${item.id}.name` ? t(`products.${item.id}.name`) : item.name}
+                                        </h3>
                                         <p className="text-primary font-bold text-xl mt-1">{item.price.toFixed(2)} TND</p>
                                     </div>
 
@@ -110,40 +114,40 @@ export default function CartPage() {
                             onClick={clearCart}
                             className="text-muted-foreground hover:text-red-500 text-sm transition-colors mt-4"
                         >
-                            Clear cart
+                            {t("cart.clearCart")}
                         </button>
                     </div>
 
                     {/* Order Summary */}
                     <div className="lg:col-span-1">
                         <div className="p-8 rounded-[2rem] bg-card/50 backdrop-blur-xl border border-border/50 sticky top-32 space-y-6">
-                            <h2 className="text-xl font-bold">Order Summary</h2>
+                            <h2 className="text-xl font-bold">{t("cart.orderSummary")}</h2>
 
                             <div className="space-y-4">
                                 <div className="flex justify-between text-muted-foreground">
-                                    <span>Subtotal</span>
+                                    <span>{t("cart.subtotal")}</span>
                                     <span>{total.toFixed(2)} TND</span>
                                 </div>
                                 <div className="flex justify-between text-muted-foreground">
-                                    <span>Cashback (5%)</span>
+                                    <span>{t("cart.cashback")}</span>
                                     <span className="text-emerald-500">+{(total * 0.05).toFixed(2)} TND</span>
                                 </div>
                                 <div className="h-px bg-border/50" />
                                 <div className="flex justify-between text-xl font-bold text-foreground">
-                                    <span>Total</span>
+                                    <span>{t("cart.total")}</span>
                                     <span>{total.toFixed(2)} TND</span>
                                 </div>
                             </div>
 
                             <Link href="/checkout" className="block">
                                 <Button className="w-full h-14 text-lg bg-gradient-to-r from-primary to-secondary hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 rounded-xl">
-                                    Checkout
+                                    {t("cart.checkout")}
                                     <ArrowRight className="w-5 h-5 ml-2" />
                                 </Button>
                             </Link>
 
                             <p className="text-xs text-muted-foreground text-center">
-                                Payment will be deducted from your wallet balance
+                                {t("cart.paymentNote")}
                             </p>
                         </div>
                     </div>

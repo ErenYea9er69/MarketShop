@@ -1,8 +1,11 @@
 "use client"
 
 import Image from "next/image"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 
 export function PaymentMethodsSection() {
+    const { t } = useLanguage()
+
     const methods = [
         {
             name: "Ooredoo",
@@ -56,10 +59,10 @@ export function PaymentMethodsSection() {
             <div className="container w-[75%] max-w-[1400px] mx-auto relative z-10">
                 <div className="text-center mb-16 space-y-4">
                     <h2 className="text-3xl md:text-4xl font-bold text-foreground">
-                        Transparent <span className="text-primary">Pricing</span>
+                        {t("payment.title")}
                     </h2>
                     <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-                        Choose the payment method that works best for you. No hidden costs.
+                        {t("payment.subtitle")}
                     </p>
                 </div>
 

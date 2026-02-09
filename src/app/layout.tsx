@@ -4,6 +4,7 @@ import "./globals.css"
 import { SessionProvider } from "@/components/providers/SessionProvider"
 import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { CartProvider } from "@/components/providers/CartProvider"
+import { LanguageProvider } from "@/components/providers/LanguageProvider"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
 import { AddToCartToast } from "@/components/shop/AddToCartToast"
@@ -38,16 +39,18 @@ export default function RootLayout({
             forcedTheme="dark"
             disableTransitionOnChange
           >
-            <CartProvider>
-              <div className="min-h-screen flex flex-col transition-colors duration-300">
-                <Header />
-                <main className="flex-1">
-                  {children}
-                </main>
-                <Footer />
-              </div>
-              <AddToCartToast />
-            </CartProvider>
+            <LanguageProvider>
+              <CartProvider>
+                <div className="min-h-screen flex flex-col transition-colors duration-300">
+                  <Header />
+                  <main className="flex-1">
+                    {children}
+                  </main>
+                  <Footer />
+                </div>
+                <AddToCartToast />
+              </CartProvider>
+            </LanguageProvider>
           </ThemeProvider>
         </SessionProvider>
       </body>

@@ -5,6 +5,7 @@ import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { useState, useEffect } from "react"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 
 interface HeroSectionProps {
     openAuth: () => void
@@ -12,6 +13,7 @@ interface HeroSectionProps {
 
 export function HeroSection({ openAuth }: HeroSectionProps) {
     const [currentSlide, setCurrentSlide] = useState(0)
+    const { t } = useLanguage()
 
     const offers = [
         "/offer/1.jpg",
@@ -49,21 +51,20 @@ export function HeroSection({ openAuth }: HeroSectionProps) {
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
                             </span>
-                            <span className="text-sm font-medium text-muted-foreground">The #1 Marketplace in Tunisia</span>
+                            <span className="text-sm font-medium text-muted-foreground">{t("hero.badge")}</span>
                         </div>
 
                         {/* Main Heading */}
                         <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-foreground animate-slide-up leading-[1.1]" style={{ animationDelay: "100ms" }}>
-                            Digital Products. <br />
+                            {t("hero.heading1")} <br />
                             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">
-                                Instant Delivery.
+                                {t("hero.heading2")}
                             </span>
                         </h1>
 
                         {/* Subheading */}
                         <p className="text-lg text-muted-foreground max-w-lg leading-relaxed animate-slide-up" style={{ animationDelay: "200ms" }}>
-                            Your one-stop shop for Gift Cards, Game Top-ups, and Software Subscriptions.
-                            Secure payments via D17, Flouci, and Bank Transfer.
+                            {t("hero.subheading")}
                         </p>
 
                         {/* CTA Buttons */}
@@ -73,7 +74,7 @@ export function HeroSection({ openAuth }: HeroSectionProps) {
                                 onClick={openAuth}
                                 className="w-full sm:w-auto px-8 h-12 rounded-2xl text-base font-semibold bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all hover:bg-[length:200%_200%] animate-gradient"
                             >
-                                Start Shopping
+                                {t("hero.cta")}
                                 <ArrowRight className="ml-2 w-4 h-4" />
                             </Button>
                         </div>
