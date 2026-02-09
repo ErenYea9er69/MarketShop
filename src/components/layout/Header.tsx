@@ -7,7 +7,7 @@ import { Menu, X, ShoppingCart, LogOut, LayoutDashboard, ChevronDown } from "luc
 import { Button } from "@/components/ui/Button"
 import { useCart } from "@/components/providers/CartProvider"
 import { AuthModal } from "@/components/auth/AuthModal"
-import { ThemeToggle } from "@/components/ui/ThemeToggle"
+
 
 const languages = [
     { code: "en", name: "English", flag: "🇬🇧" },
@@ -170,10 +170,7 @@ export function Header() {
                             transition: smoothTransition
                         }}
                     >
-                        {/* Theme Toggle */}
-                        <div className="hidden sm:block">
-                            <ThemeToggle />
-                        </div>
+                        {/* Theme Toggle Removed */}
 
                         {/* Language Selector */}
                         <div className="relative hidden sm:block">
