@@ -5,6 +5,20 @@
         "giftCards": "Gift Cards",
         "support": "Support"
     },
+    "redeem": {
+        "title": "Redeem Gift Card",
+        "description": "Enter your gift card code to add balance to your wallet",
+        "placeholder": "Enter gift card code",
+        "submit": "Redeem",
+        "redeeming": "Redeeming...",
+        "success": "Success!",
+        "successMessage": "{amount} TND has been added to your wallet",
+        "redeemAnother": "Redeem Another",
+        "viewWallet": "View Wallet",
+        "backTohome": "Back to Home",
+        "error": "Failed to redeem gift card",
+        "genericError": "An error occurred. Please try again."
+    },
     "header": {
         "getStarted": "Get Started",
         "login": "Log in",

@@ -5,6 +5,20 @@
         "giftCards": "Cartes Cadeaux",
         "support": "Support"
     },
+    "redeem": {
+        "title": "Utiliser une carte cadeau",
+        "description": "Entrez votre code de carte cadeau pour ajouter du solde à votre portefeuille",
+        "placeholder": "Entrez le code de la carte",
+        "submit": "Utiliser",
+        "redeeming": "Traitement...",
+        "success": "Succès !",
+        "successMessage": "{amount} TND ont été ajoutés à votre portefeuille",
+        "redeemAnother": "Utiliser une autre",
+        "viewWallet": "Voir le portefeuille",
+        "backTohome": "Retour à l'accueil",
+        "error": "Échec de l'utilisation de la carte cadeau",
+        "genericError": "Une erreur est survenue. Veuillez réessayer."
+    },
     "header": {
         "getStarted": "Commencer",
         "login": "Connexion",

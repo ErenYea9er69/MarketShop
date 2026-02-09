@@ -1,15 +1,14 @@
 "use client"
 
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { Gift, ArrowRight, Check, AlertCircle, ArrowLeft } from "lucide-react"
+import { Gift, ArrowRight, Check, AlertCircle, ArrowLeft, Sparkles } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card"
+import { useLanguage } from "@/components/providers/LanguageProvider"
 
 export default function RedeemPage() {
-    const router = useRouter()
+    const { t } = useLanguage()
     const [code, setCode] = useState("")
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
@@ -31,94 +30,122 @@ export default function RedeemPage() {
             const data = await res.json()
 
             if (!res.ok) {
-                setError(data.error || "Failed to redeem gift card")
+                setError(data.error || t("redeem.error"))
             } else {
                 setSuccess({ amount: data.amount })
                 setCode("")
             }
         } catch {
-            setError("An error occurred. Please try again.")
+            setError(t("redeem.genericError"))
         } finally {
             setLoading(false)
         }
     }
 
     return (
-        <div className="py-12">
-            <div className="container">
-                <div className="max-w-md mx-auto">
+        <div className="min-h-screen bg-background relative overflow-hidden flex items-center justify-center py-32">
+            {/* Background Elements */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-primary/10 via-primary/5 to-transparent blur-3xl opacity-50" />
+                <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] dark:invert-0 invert" />
+            </div>
+
+            <div className="container relative z-10 max-w-lg mx-auto px-4">
+                <div className="mb-8">
                     <Link
                         href="/"
-                        className="inline-flex items-center gap-2 text-[#a1a1aa] hover:text-[#fafafa] mb-8 transition-colors"
+                        className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group"
                     >
-                        <ArrowLeft className="w-4 h-4" />
-                        Back to Home
+                        <ArrowLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                        {t("redeem.backTohome")}
                     </Link>
+                </div>
 
-                    <Card>
-                        <CardHeader className="text-center">
-                            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-[#a855f7]/20 to-[#ec4899]/20 flex items-center justify-center">
-                                <Gift className="w-8 h-8 text-[#a855f7]" />
+                <div className="bg-card/50 backdrop-blur-xl border border-border/50 rounded-[2rem] p-8 shadow-2xl relative overflow-hidden group hover:border-primary/20 transition-all duration-500">
+                    {/* Gradient Glow */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                    <div className="relative z-10">
+                        <div className="text-center mb-8">
+                            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center shadow-lg shadow-primary/10 group-hover:scale-110 transition-transform duration-500">
+                                <Gift className="w-10 h-10 text-primary" />
                             </div>
-                            <CardTitle className="text-2xl">Redeem Gift Card</CardTitle>
-                            <CardDescription>
-                                Enter your gift card code to add balance to your wallet
-                            </CardDescription>
-                        </CardHeader>
-                        <CardContent>
-                            {success ? (
-                                <div className="text-center py-6">
-                                    <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-[#22c55e]/20 flex items-center justify-center">
-                                        <Check className="w-8 h-8 text-[#22c55e]" />
-                                    </div>
-                                    <h3 className="text-xl font-bold text-[#fafafa] mb-2">Success!</h3>
-                                    <p className="text-[#a1a1aa] mb-6">
-                                        <strong className="text-[#22c55e]">{success.amount} TND</strong> has been added to your wallet
-                                    </p>
-                                    <div className="flex gap-4 justify-center">
-                                        <Button variant="secondary" onClick={() => setSuccess(null)}>
-                                            Redeem Another
+                            <h1 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80 mb-2">
+                                {t("redeem.title")}
+                            </h1>
+                            <p className="text-muted-foreground">
+                                {t("redeem.description")}
+                            </p>
+                        </div>
+
+                        {success ? (
+                            <div className="text-center py-6 animate-fade-in">
+                                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-emerald-500/10 flex items-center justify-center ring-4 ring-emerald-500/5">
+                                    <Check className="w-8 h-8 text-emerald-500" />
+                                </div>
+                                <h3 className="text-xl font-bold text-foreground mb-2">{t("redeem.success")}</h3>
+                                <p className="text-muted-foreground mb-8">
+                                    <span className="text-emerald-500 font-bold text-lg">{success.amount} TND</span> {t("redeem.successMessage").replace("{amount}", "")}
+                                </p>
+                                <div className="flex flex-col gap-3">
+                                    <Button
+                                        variant="outline"
+                                        onClick={() => setSuccess(null)}
+                                        className="w-full h-12 rounded-xl"
+                                    >
+                                        {t("redeem.redeemAnother")}
+                                    </Button>
+                                    <Link href="/dashboard/wallet" className="block w-full">
+                                        <Button className="w-full h-12 rounded-xl bg-gradient-to-r from-primary to-secondary hover:opacity-90">
+                                            {t("redeem.viewWallet")}
+                                            <ArrowRight className="w-4 h-4 ml-2" />
                                         </Button>
-                                        <Link href="/dashboard/wallet">
-                                            <Button>
-                                                View Wallet
-                                                <ArrowRight className="w-4 h-4" />
-                                            </Button>
-                                        </Link>
+                                    </Link>
+                                </div>
+                            </div>
+                        ) : (
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                {error && (
+                                    <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 flex items-center gap-3 animate-shake">
+                                        <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" />
+                                        <span className="text-red-500 text-sm font-medium">{error}</span>
+                                    </div>
+                                )}
+
+                                <div className="space-y-2">
+                                    <div className="relative">
+                                        <Input
+                                            type="text"
+                                            placeholder={t("redeem.placeholder")}
+                                            value={code}
+                                            onChange={(e) => setCode(e.target.value.toUpperCase())}
+                                            className="text-center text-2xl tracking-[0.2em] font-mono h-16 rounded-xl border-border/50 bg-background/50 focus:bg-background transition-all uppercase placeholder:tracking-normal placeholder:font-sans"
+                                            required
+                                        />
+                                        <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-transparent pointer-events-none group-focus-within:ring-primary/50" />
                                     </div>
                                 </div>
-                            ) : (
-                                <form onSubmit={handleSubmit} className="space-y-4">
-                                    {error && (
-                                        <div className="p-4 rounded-xl bg-[rgba(239,68,68,0.1)] border border-[#ef4444]/30 flex items-center gap-3">
-                                            <AlertCircle className="w-5 h-5 text-[#ef4444] flex-shrink-0" />
-                                            <span className="text-[#ef4444] text-sm">{error}</span>
-                                        </div>
+
+                                <Button
+                                    type="submit"
+                                    className="w-full h-14 text-lg rounded-xl bg-gradient-to-r from-primary to-secondary hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 shadow-lg shadow-primary/20"
+                                    disabled={loading || !code.trim()}
+                                >
+                                    {loading ? (
+                                        <span className="flex items-center gap-2">
+                                            <div className="w-5 h-5 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                                            {t("redeem.redeeming")}
+                                        </span>
+                                    ) : (
+                                        <span className="flex items-center justify-center gap-2">
+                                            {t("redeem.submit")}
+                                            <Sparkles className="w-5 h-5" />
+                                        </span>
                                     )}
-
-                                    <Input
-                                        type="text"
-                                        placeholder="Enter gift card code"
-                                        value={code}
-                                        onChange={(e) => setCode(e.target.value.toUpperCase())}
-                                        className="text-center text-lg tracking-wider font-mono"
-                                        required
-                                    />
-
-                                    <Button type="submit" className="w-full" disabled={loading || !code.trim()}>
-                                        {loading ? (
-                                            <span className="animate-pulse">Redeeming...</span>
-                                        ) : (
-                                            <>
-                                                Redeem
-                                                <ArrowRight className="w-4 h-4" />
-                                            </>
-                                        )}
-                                    </Button>
-                                </form>
-                            )}
-                        </CardContent>
-                    </Card>
+                                </Button>
+                            </form>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>
