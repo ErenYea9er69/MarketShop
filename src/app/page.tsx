@@ -4,7 +4,7 @@ import { useState } from "react"
 import { AuthModal } from "@/components/auth/AuthModal"
 import { HeroSection } from "@/components/home/HeroSection"
 import { BestSellersSection } from "@/components/home/BestSellersSection"
-import { FeaturedCategories } from "@/components/home/FeaturedCategories"
+import { PaymentMethodsSection } from "@/components/home/PaymentMethodsSection"
 
 export default function Home() {
   const [authModalOpen, setAuthModalOpen] = useState(false)
@@ -27,7 +27,7 @@ export default function Home() {
 
       <BestSellersSection />
 
-      <FeaturedCategories />
+      <PaymentMethodsSection />
     </div>
   )
 }
