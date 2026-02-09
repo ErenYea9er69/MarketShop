@@ -31,9 +31,7 @@ export function BestSellersSection() {
                             Top rated digital products chosen by our community this week.
                         </p>
                         {/* Decorative Background Text */}
-                        <span className="absolute -top-10 -left-6 text-8xl font-bold text-foreground/[0.02] pointer-events-none select-none hidden md:block">
-                            BEST
-                        </span>
+
                     </div>
 
                     <Link href="/shop">
