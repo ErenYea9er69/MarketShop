@@ -13,9 +13,9 @@ export function HeroSection({ openAuth }: HeroSectionProps) {
         <section className="relative pt-24 pb-16 lg:pt-32 lg:pb-20 overflow-hidden bg-background">
             {/* Abstract Background Shapes */}
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none">
-                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/10 rounded-full blur-[120px] animate-pulse-glow" />
-                <div className="absolute top-[20%] right-[-10%] w-[40%] h-[60%] bg-secondary/10 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
-                <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[40%] bg-primary/5 rounded-full blur-[100px]" />
+                <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] bg-primary/30 rounded-full blur-[120px] animate-pulse-glow" />
+                <div className="absolute top-[20%] right-[-10%] w-[40%] h-[60%] bg-secondary/30 rounded-full blur-[120px] animate-pulse-glow" style={{ animationDelay: "2s" }} />
+                <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[40%] bg-primary/15 rounded-full blur-[100px]" />
             </div>
 
             {/* Grid Pattern Overlay */}

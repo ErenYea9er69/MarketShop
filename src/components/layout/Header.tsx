@@ -229,7 +229,7 @@ export function Header() {
                                 <Button
                                     onClick={() => openAuth("register")}
                                     size="sm"
-                                    className={`rounded-full shadow-lg shadow-[#EAB308]/20 ${isPillMode ? 'px-4 h-9' : 'px-6'}`}
+                                    className={`rounded-full shadow-lg shadow-[#EAB308]/20 bg-gradient-to-r from-[#EAB308] to-[#F59E0B] text-[#0a0a0a] border-none hover:opacity-90 ${isPillMode ? 'px-4 h-9' : 'px-6'}`}
                                     style={{
                                         fontSize: isPillMode ? '13px' : '14px',
                                         transition: smoothTransition
