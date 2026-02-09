@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import { useState } from "react"
 import { ShoppingCart, Trash2, Plus, Minus, ArrowRight, ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { useCart } from "@/components/providers/CartProvider"
@@ -33,6 +34,59 @@ export default function CartPage() {
                             </Button>
                         </Link>
                     </div>
+                </div>
+            </div>
+        )
+    }
+
+    const [isCheckingOut, setIsCheckingOut] = useState(false)
+    const [checkoutError, setCheckoutError] = useState("")
+    const [showSuccess, setShowSuccess] = useState(false)
+
+    const handleCheckout = async () => {
+        setIsCheckingOut(true)
+        setCheckoutError("")
+
+        try {
+            const res = await fetch("/api/orders", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ items, total })
+            })
+
+            const data = await res.json()
+
+            if (!res.ok) {
+                setCheckoutError(data.error || "Checkout failed")
+                return
+            }
+
+            // Success
+            setShowSuccess(true)
+            clearCart()
+        } catch (error) {
+            setCheckoutError("An error occurred. Please try again.")
+        } finally {
+            setIsCheckingOut(false)
+        }
+    }
+
+    if (showSuccess) {
+        return (
+            <div className="min-h-screen bg-background relative overflow-hidden pt-32 pb-12 flex items-center justify-center">
+                <div className="max-w-md w-full bg-[#151515] border border-[#262626] rounded-3xl p-8 text-center animate-slide-up">
+                    <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500/20 flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center">
+                            <span className="text-black text-xl font-bold">✓</span>
+                        </div>
+                    </div>
+                    <h2 className="text-2xl font-bold mb-2 text-[#fafafa]">Order Confirmed!</h2>
+                    <p className="text-[#a1a1aa] mb-8">Thank you for your purchase. Your digital items are now available.</p>
+                    <Link href="/dashboard">
+                        <Button className="w-full h-12 rounded-xl bg-gradient-to-r from-[#EAB308] to-[#F59E0B] text-black font-bold">
+                            Go to Dashboard
+                        </Button>
+                    </Link>
                 </div>
             </div>
         )
@@ -139,12 +193,29 @@ export default function CartPage() {
                                 </div>
                             </div>
 
-                            <Link href="/checkout" className="block">
-                                <Button className="w-full h-14 text-lg bg-gradient-to-r from-primary to-secondary hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 rounded-xl">
-                                    {t("cart.checkout")}
-                                    <ArrowRight className="w-5 h-5 ml-2" />
-                                </Button>
-                            </Link>
+                            {checkoutError && (
+                                <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl text-red-500 text-sm">
+                                    {checkoutError}
+                                </div>
+                            )}
+
+                            <Button
+                                onClick={handleCheckout}
+                                disabled={isCheckingOut}
+                                className="w-full h-14 text-lg bg-gradient-to-r from-[#EAB308] to-[#F59E0B] hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 rounded-xl text-black font-bold"
+                            >
+                                {isCheckingOut ? (
+                                    <span className="flex items-center gap-2">
+                                        <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                                        Processing...
+                                    </span>
+                                ) : (
+                                    <>
+                                        {t("cart.checkout")}
+                                        <ArrowRight className="w-5 h-5 ml-2" />
+                                    </>
+                                )}
+                            </Button>
 
                             <p className="text-xs text-muted-foreground text-center">
                                 {t("cart.paymentNote")}
