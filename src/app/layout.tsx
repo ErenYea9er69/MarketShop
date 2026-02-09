@@ -6,6 +6,7 @@ import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { CartProvider } from "@/components/providers/CartProvider"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
+import { AddToCartToast } from "@/components/shop/AddToCartToast"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -45,6 +46,7 @@ export default function RootLayout({
                 </main>
                 <Footer />
               </div>
+              <AddToCartToast />
             </CartProvider>
           </ThemeProvider>
         </SessionProvider>

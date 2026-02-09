@@ -1,19 +1,36 @@
+"use client"
+
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { ArrowLeft, Check, ShoppingCart, Sparkles, Shield, Clock, Zap } from "lucide-react"
+import { ArrowLeft, ShoppingCart } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { dummyProducts } from "@/lib/dummy-data"
+import { useCart } from "@/components/providers/CartProvider"
+import { use, useState } from "react"
 
 interface ProductPageProps {
     params: Promise<{ id: string }>
 }
 
-export default async function ProductPage({ params }: ProductPageProps) {
-    const { id } = await params
+export default function ProductPage({ params }: ProductPageProps) {
+    const { id } = use(params)
     const product = dummyProducts.find((p) => p.id === id)
+    const { addItem } = useCart()
+    const [isAdding, setIsAdding] = useState(false)
 
     if (!product) {
         notFound()
+    }
+
+    const handleAddToCart = () => {
+        setIsAdding(true)
+        addItem({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image || undefined,
+        })
+        setTimeout(() => setIsAdding(false), 300)
     }
 
     return (
@@ -31,9 +48,7 @@ export default async function ProductPage({ params }: ProductPageProps) {
                 </Link>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                    {/* Left Column: Header Info + Image */}
-                    {/* Left Column: Header Info + Image */}
-                    {/* Product Image */}
+                    {/* Left Column: Product Image */}
                     <div className="relative aspect-square rounded-[2.5rem] bg-card border border-border overflow-hidden shadow-2xl group w-full">
                         <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50" />
                         {product.image ? (
@@ -83,10 +98,12 @@ export default async function ProductPage({ params }: ProductPageProps) {
                         {/* Add to Cart */}
                         <Button
                             size="lg"
-                            className="w-full h-14 text-lg gap-2 shadow-lg shadow-primary/25 rounded-xl bg-gradient-to-r from-primary to-secondary hover:opacity-90 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border-0"
+                            className={`w-full h-14 text-lg gap-2 shadow-lg shadow-primary/25 rounded-xl bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-all duration-300 border-0 ${isAdding ? "scale-95" : "hover:scale-[1.02] active:scale-[0.98]"
+                                }`}
                             disabled={product.stock === 0}
+                            onClick={handleAddToCart}
                         >
-                            <ShoppingCart className="w-5 h-5" />
+                            <ShoppingCart className={`w-5 h-5 transition-transform ${isAdding ? "scale-125" : ""}`} />
                             {product.stock > 0 ? "Add to Cart" : "Out of Stock"}
                         </Button>
 

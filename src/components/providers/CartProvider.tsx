@@ -18,6 +18,8 @@ interface CartContextType {
     clearCart: () => void
     total: number
     itemCount: number
+    lastAddedItem: Omit<CartItem, "quantity"> | null
+    clearLastAddedItem: () => void
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -25,6 +27,7 @@ const CartContext = createContext<CartContextType | undefined>(undefined)
 export function CartProvider({ children }: { children: ReactNode }) {
     const [items, setItems] = useState<CartItem[]>([])
     const [isLoaded, setIsLoaded] = useState(false)
+    const [lastAddedItem, setLastAddedItem] = useState<Omit<CartItem, "quantity"> | null>(null)
 
     // Load cart from localStorage on mount
     useEffect(() => {
@@ -42,7 +45,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
         }
     }, [items, isLoaded])
 
+    // Auto-clear lastAddedItem after 3 seconds
+    useEffect(() => {
+        if (lastAddedItem) {
+            const timer = setTimeout(() => {
+                setLastAddedItem(null)
+            }, 3000)
+            return () => clearTimeout(timer)
+        }
+    }, [lastAddedItem])
+
     const addItem = (item: Omit<CartItem, "quantity">) => {
+        setLastAddedItem(item)
         setItems((prev) => {
             const existingItem = prev.find((i) => i.id === item.id)
             if (existingItem) {
@@ -72,6 +86,10 @@ export function CartProvider({ children }: { children: ReactNode }) {
         setItems([])
     }
 
+    const clearLastAddedItem = () => {
+        setLastAddedItem(null)
+    }
+
     const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0)
     const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
 
@@ -85,6 +103,8 @@ export function CartProvider({ children }: { children: ReactNode }) {
                 clearCart,
                 total,
                 itemCount,
+                lastAddedItem,
+                clearLastAddedItem,
             }}
         >
             {children}
@@ -99,3 +119,4 @@ export function useCart() {
     }
     return context
 }
+
