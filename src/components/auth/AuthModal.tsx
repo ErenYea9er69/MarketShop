@@ -138,7 +138,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                             <Button
                                 type="button"
                                 variant="outline"
-                                className="w-full h-12 rounded-xl bg-white text-black hover:bg-gray-100 border-none font-medium flex items-center justify-center gap-3 transition-colors"
+                                className="w-full h-12 rounded-xl bg-[#151515] text-white hover:bg-[#262626] border border-[#262626] font-medium flex items-center justify-center gap-3 transition-colors"
                                 onClick={() => signIn("google")}
                             >
                                 <svg viewBox="0 0 24 24" className="w-5 h-5">
@@ -162,37 +162,37 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                             <form onSubmit={view === "login" ? handleLogin : handleRegister} className="space-y-4">
                                 {view === "register" && (
                                     <div className="relative group">
-                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#22c55e] transition-colors" />
+                                        <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#EAB308] transition-colors" />
                                         <Input
                                             placeholder={t("auth.fullName")}
                                             value={name}
                                             onChange={(e) => setName(e.target.value)}
-                                            className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#22c55e] transition-all"
+                                            className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#EAB308] transition-all"
                                             required
                                         />
                                     </div>
                                 )}
 
                                 <div className="relative group">
-                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#22c55e] transition-colors" />
+                                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#EAB308] transition-colors" />
                                     <Input
                                         type="email"
                                         placeholder={t("auth.email")}
                                         value={email}
                                         onChange={(e) => setEmail(e.target.value)}
-                                        className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#22c55e] transition-all"
+                                        className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#EAB308] transition-all"
                                         required
                                     />
                                 </div>
 
                                 <div className="relative group">
-                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#22c55e] transition-colors" />
+                                    <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#EAB308] transition-colors" />
                                     <Input
                                         type={showPassword ? "text" : "password"}
                                         placeholder={t("auth.password")}
                                         value={password}
                                         onChange={(e) => setPassword(e.target.value)}
-                                        className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#22c55e] transition-all"
+                                        className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#EAB308] transition-all"
                                         required
                                     />
                                     <button
@@ -206,13 +206,13 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
 
                                 {view === "register" && (
                                     <div className="relative group">
-                                        <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#22c55e] transition-colors" />
+                                        <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[#a1a1aa] group-focus-within:text-[#EAB308] transition-colors" />
                                         <Input
                                             type={showPassword ? "text" : "password"}
                                             placeholder={t("auth.confirmPassword")}
                                             value={confirmPassword}
                                             onChange={(e) => setConfirmPassword(e.target.value)}
-                                            className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#22c55e] transition-all"
+                                            className="pl-12 h-12 rounded-xl bg-[#151515] border-[#262626] focus:border-[#EAB308] transition-all"
                                             required
                                         />
                                     </div>
@@ -220,7 +220,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
 
                                 <Button
                                     type="submit"
-                                    className="w-full h-12 rounded-xl text-base font-medium shadow-lg shadow-[#22c55e]/20 hover:shadow-[#22c55e]/40 transition-shadow"
+                                    className="w-full h-12 rounded-xl text-base font-medium shadow-lg shadow-[#EAB308]/20 hover:shadow-[#EAB308]/40 transition-shadow bg-gradient-to-r from-[#EAB308] to-[#F59E0B] text-black border-none"
                                     disabled={isLoading}
                                 >
                                     {isLoading ? (
@@ -245,7 +245,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                                             setView(view === "login" ? "register" : "login")
                                             setError("")
                                         }}
-                                        className="text-[#22c55e] hover:text-[#4ade80] font-semibold hover:underline transition-colors"
+                                        className="text-[#EAB308] hover:text-[#F59E0B] font-semibold hover:underline transition-colors"
                                     >
                                         {view === "login" ? t("auth.signUpNow") : t("auth.signIn")}
                                     </button>
@@ -258,13 +258,13 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                 {/* Right Side - Visual */}
                 <div className="hidden lg:flex w-1/2 relative bg-[#050505] items-center justify-center overflow-hidden">
                     {/* Background Gradients */}
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#22c55e]/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 animate-pulse-glow" />
-                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#06b6d4]/20 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 animate-pulse-glow" style={{ animationDelay: "1s" }} />
+                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#EAB308]/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 animate-pulse-glow" />
+                    <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#F59E0B]/20 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/2 animate-pulse-glow" style={{ animationDelay: "1s" }} />
 
                     {/* Glass Card Visual */}
                     <div className="relative z-10 w-80 aspect-[3/4] rounded-3xl bg-white/5 backdrop-blur-2xl border border-white/10 shadow-2xl p-6 flex flex-col justify-between transform rotate-[-6deg] hover:rotate-0 transition-transform duration-500 hover:scale-105">
                         <div className="flex justify-between items-start">
-                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#22c55e] to-[#06b6d4] flex items-center justify-center">
+                            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#EAB308] to-[#F59E0B] flex items-center justify-center">
                                 <span className="text-xl font-bold text-black">K</span>
                             </div>
                             <div className="px-3 py-1 rounded-full bg-white/10 text-xs font-medium text-white/80">
@@ -275,9 +275,9 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
                         <div className="space-y-4">
                             <div className="h-2 w-2/3 bg-white/10 rounded-full" />
                             <div className="h-2 w-1/2 bg-white/10 rounded-full" />
-                            <div className="h-24 w-full bg-gradient-to-br from-[#22c55e]/20 to-[#06b6d4]/20 rounded-2xl border border-white/5 backdrop-blur-md flex items-center justify-center">
+                            <div className="h-24 w-full bg-gradient-to-br from-[#EAB308]/20 to-[#F59E0B]/20 rounded-2xl border border-white/5 backdrop-blur-md flex items-center justify-center">
                                 <div className="text-center">
-                                    <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#22c55e] to-[#06b6d4]">
+                                    <div className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#EAB308] to-[#F59E0B]">
                                         {t("auth.secure")}
                                     </div>
                                     <div className="text-xs text-white/50">{t("auth.encrypted")}</div>
@@ -288,7 +288,7 @@ export function AuthModal({ isOpen, onClose, defaultView = "login" }: AuthModalP
 
                     {/* Floating Elements */}
                     <div className="absolute top-1/4 right-1/4 w-16 h-16 bg-[#151515] rounded-2xl border border-[#262626] shadow-xl flex items-center justify-center animate-bounce duration-[3000ms]">
-                        <Lock className="w-6 h-6 text-[#22c55e]" />
+                        <Lock className="w-6 h-6 text-[#EAB308]" />
                     </div>
                 </div>
             </div>

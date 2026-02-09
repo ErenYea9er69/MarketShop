@@ -4,12 +4,12 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22c55e] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] disabled:pointer-events-none disabled:opacity-50",
+    "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#EAB308] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0a0a0a] disabled:pointer-events-none disabled:opacity-50",
     {
         variants: {
             variant: {
                 default:
-                    "bg-gradient-to-r from-[#22c55e] to-[#06b6d4] text-[#0a0a0a] hover:shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:-translate-y-0.5",
+                    "bg-gradient-to-r from-[#EAB308] to-[#F59E0B] text-[#0a0a0a] hover:shadow-[0_0_20px_rgba(234,179,8,0.3)] hover:-translate-y-0.5",
                 secondary:
                     "bg-[#151515] text-[#fafafa] border border-[#262626] hover:bg-[#1a1a1a] hover:border-[#3a3a3a]",
                 ghost:
@@ -19,7 +19,7 @@ const buttonVariants = cva(
                 outline:
                     "border border-[#262626] bg-transparent text-[#fafafa] hover:bg-[#151515] hover:border-[#3a3a3a]",
                 link:
-                    "text-[#22c55e] underline-offset-4 hover:underline",
+                    "text-[#EAB308] underline-offset-4 hover:underline",
             },
             size: {
                 default: "h-11 px-6 py-2",
