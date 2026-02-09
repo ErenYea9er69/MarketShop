@@ -20,7 +20,7 @@ export function HeroSection({ openAuth }: HeroSectionProps) {
             {/* Grid Pattern Overlay */}
             <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.03] z-0 dark:invert-0 invert" />
 
-            <div className="w-[85%] max-w-[1400px] mx-auto relative z-10">
+            <div className="w-[80%] max-w-[1400px] mx-auto relative z-10">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left Content */}

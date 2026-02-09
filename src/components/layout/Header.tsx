@@ -83,8 +83,8 @@ export function Header() {
                             : 'w-full bg-transparent'
                         }`}
                     style={{
-                        width: isPillMode ? 'fit-content' : '100%',
-                        maxWidth: isPillMode ? '1280px' : '100%',
+                        width: isPillMode ? 'fit-content' : '83%',
+                        maxWidth: isPillMode ? '1280px' : '1400px',
                         height: isPillMode ? '56px' : '80px',
                         paddingLeft: isPillMode ? '8px' : '24px',
                         paddingRight: isPillMode ? '8px' : '24px',
