@@ -1,14 +1,32 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { ArrowRight } from "lucide-react"
 import { Button } from "@/components/ui/Button"
+import { useState, useEffect } from "react"
 
 interface HeroSectionProps {
     openAuth: () => void
 }
 
 export function HeroSection({ openAuth }: HeroSectionProps) {
+    const [currentSlide, setCurrentSlide] = useState(0)
+
+    const offers = [
+        "/offer/1.jpg",
+        "/offer/2.jpg",
+        "/offer/3.jpg",
+        "/offer/4.jpg",
+        "/offer/5.jpg"
+    ]
+
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentSlide((prev) => (prev + 1) % offers.length)
+        }, 3000)
+        return () => clearInterval(timer)
+    }, [])
     return (
         <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden bg-background">
             {/* Abstract Background Shapes */}
@@ -61,17 +79,40 @@ export function HeroSection({ openAuth }: HeroSectionProps) {
                         </div>
                     </div>
 
-                    {/* Right Image Placeholder */}
+                    {/* Right Image Carousel */}
                     <div className="relative w-full aspect-square lg:h-[500px] flex items-center justify-center animate-slide-up" style={{ animationDelay: "300ms" }}>
-                        <div className="relative w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl border border-border/50 backdrop-blur-sm flex items-center justify-center overflow-hidden group">
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-secondary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-
-                            {/* Placeholder text/icon until image is added */}
-                            <div className="text-center space-y-4 p-8">
-                                <div className="w-20 h-20 rounded-full bg-accent/50 mx-auto flex items-center justify-center text-3xl">
-                                    🖼️
+                        <div className="relative w-full h-full bg-gradient-to-br from-primary/5 to-secondary/5 rounded-3xl border border-border/50 backdrop-blur-sm overflow-hidden group shadow-2xl">
+                            {offers.map((src, index) => (
+                                <div
+                                    key={src}
+                                    className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+                                        }`}
+                                >
+                                    <Image
+                                        src={src}
+                                        alt={`Special Offer ${index + 1}`}
+                                        fill
+                                        className="object-cover"
+                                        priority={index === 0}
+                                    />
+                                    {/* Optional subtle gradient for text contrast if needed anywhere, otherwise clean */}
+                                    <div className="absolute inset-0 bg-black/10" />
                                 </div>
-                                <p className="text-muted-foreground font-medium">Offers Image Placement</p>
+                            ))}
+
+                            {/* Carousel Indicators */}
+                            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+                                {offers.map((_, index) => (
+                                    <button
+                                        key={index}
+                                        onClick={() => setCurrentSlide(index)}
+                                        className={`h-1.5 rounded-full transition-all duration-300 ${index === currentSlide
+                                            ? "w-6 bg-primary shadow-[0_0_10px_rgba(234,179,8,0.5)]"
+                                            : "w-1.5 bg-white/50 hover:bg-white/80"
+                                            }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                    />
+                                ))}
                             </div>
                         </div>
 
