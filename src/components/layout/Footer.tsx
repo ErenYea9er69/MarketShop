@@ -15,27 +15,27 @@ export function Footer() {
                     {/* Brand */}
                     <div className="space-y-4">
                         <Link href="/" className="flex items-center gap-2">
-                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#22c55e] to-[#06b6d4] flex items-center justify-center">
-                                <span className="text-[#0a0a0a] font-bold text-lg">K</span>
+                            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-[#EAB308] to-[#F59E0B] flex items-center justify-center shadow-lg shadow-[#EAB308]/20">
+                                <span className="text-black font-bold text-lg">K</span>
                             </div>
-                            <span className="text-xl font-bold text-[#fafafa]">Kwaret</span>
+                            <span className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#fafafa] to-[#a1a1aa]">Kwaret</span>
                         </Link>
-                        <p className="text-[#71717a] text-sm leading-relaxed">
+                        <p className="text-[#a1a1aa] text-sm leading-relaxed">
                             {t("footer.description")}
                         </p>
                     </div>
 
                     {/* Company */}
                     <div>
-                        <h4 className="text-[#fafafa] font-semibold mb-4">{t("footer.company")}</h4>
+                        <h4 className="text-[#EAB308] font-bold mb-4">{t("footer.company")}</h4>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="/#faq" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/#faq" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.faq")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/contact" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/contact" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.contact")}
                                 </Link>
                             </li>
@@ -44,25 +44,25 @@ export function Footer() {
 
                     {/* Information */}
                     <div>
-                        <h4 className="text-[#fafafa] font-semibold mb-4">{t("footer.information")}</h4>
+                        <h4 className="text-[#EAB308] font-bold mb-4">{t("footer.information")}</h4>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="/shop" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/shop" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.shop")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/privacy" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/privacy" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.privacyPolicy")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/refund" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/refund" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.refundPolicy")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/terms" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/terms" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.termsOfService")}
                                 </Link>
                             </li>
@@ -71,25 +71,25 @@ export function Footer() {
 
                     {/* Services */}
                     <div>
-                        <h4 className="text-[#fafafa] font-semibold mb-4">{t("footer.services")}</h4>
+                        <h4 className="text-[#EAB308] font-bold mb-4">{t("footer.services")}</h4>
                         <ul className="space-y-3">
                             <li>
-                                <Link href="/shop?category=gift_cards" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/shop?category=gift_cards" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.giftCards")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/shop?category=subscriptions" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/shop?category=subscriptions" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.subscriptions")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/shop?category=product_keys" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/shop?category=product_keys" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.productKeys")}
                                 </Link>
                             </li>
                             <li>
-                                <Link href="/shop?category=top_ups" className="text-[#71717a] hover:text-[#fafafa] text-sm transition-colors">
+                                <Link href="/shop?category=top_ups" className="text-[#71717a] hover:text-[#EAB308] text-sm transition-colors">
                                     {t("footer.topUps")}
                                 </Link>
                             </li>
@@ -104,7 +104,7 @@ export function Footer() {
                     </p>
                     <a
                         href="mailto:support@kwaret.shop"
-                        className="flex items-center gap-2 text-[#71717a] hover:text-[#22c55e] text-sm transition-colors"
+                        className="flex items-center gap-2 text-[#71717a] hover:text-[#EAB308] text-sm transition-colors"
                     >
                         <Mail className="w-4 h-4" />
                         support@kwaret.shop
