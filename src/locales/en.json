@@ -3,7 +3,7 @@
         "home": "Home",
         "shop": "Shop",
         "giftCards": "Gift Cards",
-        "support": "Support"
+        "support": "Top Up"
     },
     "redeem": {
         "title": "Redeem Gift Card",
@@ -17,6 +17,27 @@
         "viewWallet": "View Wallet",
         "backTohome": "Back to Home",
         "error": "Failed to redeem gift card",
+        "genericError": "An error occurred. Please try again."
+    },
+    "topup": {
+        "title": "Top Up Balance",
+        "description": "Add funds to your wallet instantly",
+        "customAmountPlaceholder": "Custom amount (min 5 TND)",
+        "continue": "Continue",
+        "minAmount": "Minimum amount is 5 TND",
+        "selectedAmount": "Selected Amount",
+        "changeAmount": "Change Amount",
+        "sendInstruction": "Send",
+        "via": "via",
+        "sendTo": "Send to",
+        "important": "Important",
+        "importantMessage": "After sending the payment, click the button below to notify us. Your balance will be updated usually within 5-30 minutes.",
+        "back": "Back",
+        "confirmSent": "I have sent the payment",
+        "successTitle": "Request Submitted!",
+        "successMessage": "We've received your top-up request for",
+        "successSubMessage": "Your balance will be updated once we verify the transaction.",
+        "error": "Failed to create top-up request",
         "genericError": "An error occurred. Please try again."
     },
     "header": {

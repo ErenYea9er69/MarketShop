@@ -25,6 +25,29 @@ export function Header() {
     const { language, setLanguage, t } = useLanguage()
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [langMenuOpen, setLangMenuOpen] = useState(false)
+    const [balance, setBalance] = useState<number | null>(null)
+
+    // Fetch balance
+    useEffect(() => {
+        const fetchBalance = async () => {
+            if (session?.user) {
+                try {
+                    const res = await fetch("/api/user/balance")
+                    if (res.ok) {
+                        const data = await res.json()
+                        setBalance(data.balance)
+                    }
+                } catch (error) {
+                    console.error("Failed to fetch balance", error)
+                }
+            }
+        }
+
+        fetchBalance()
+        // Poll every 30 seconds to keep updated
+        const interval = setInterval(fetchBalance, 30000)
+        return () => clearInterval(interval)
+    }, [session])
 
     // Auth Modal State
     const [authModalOpen, setAuthModalOpen] = useState(false)
@@ -242,7 +265,15 @@ export function Header() {
                         </Link>
 
                         {/* Auth */}
-                        <div className="hidden sm:flex items-center gap-2">
+                        <div className="hidden sm:flex items-center gap-4">
+                            {/* Balance Display - Always visible */}
+                            {/* Balance Display - Always visible */}
+                            <div className="flex flex-col items-end justify-center h-full">
+                                <span className="text-[#fafafa] font-bold font-mono">
+                                    {balance !== null ? balance.toFixed(2) : "0.00"} <span className="text-[#EAB308] text-xs">TND</span>
+                                </span>
+                            </div>
+
                             {status === "loading" ? (
                                 <div className="w-20 h-8 skeleton rounded-full" />
                             ) : session ? (

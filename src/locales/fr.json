@@ -3,7 +3,7 @@
         "home": "Accueil",
         "shop": "Boutique",
         "giftCards": "Cartes Cadeaux",
-        "support": "Support"
+        "support": "Recharger"
     },
     "redeem": {
         "title": "Utiliser une carte cadeau",
@@ -17,6 +17,27 @@
         "viewWallet": "Voir le portefeuille",
         "backTohome": "Retour à l'accueil",
         "error": "Échec de l'utilisation de la carte cadeau",
+        "genericError": "Une erreur est survenue. Veuillez réessayer."
+    },
+    "topup": {
+        "title": "Recharger le solde",
+        "description": "Ajoutez des fonds à votre portefeuille instantanément",
+        "customAmountPlaceholder": "Montant personnalisé (min 5 TND)",
+        "continue": "Continuer",
+        "minAmount": "Le montant minimum est de 5 TND",
+        "selectedAmount": "Montant sélectionné",
+        "changeAmount": "Changer le montant",
+        "sendInstruction": "Envoyer",
+        "via": "via",
+        "sendTo": "Envoyer à",
+        "important": "Important",
+        "importantMessage": "Après avoir envoyé le paiement, cliquez sur le bouton ci-dessous pour nous en informer. Votre solde sera mis à jour généralement dans les 5 à 30 minutes.",
+        "back": "Retour",
+        "confirmSent": "J'ai envoyé le paiement",
+        "successTitle": "Demande soumise !",
+        "successMessage": "Nous avons reçu votre demande de recharge pour",
+        "successSubMessage": "Votre solde sera mis à jour une fois la transaction vérifiée.",
+        "error": "Échec de la création de la demande de recharge",
         "genericError": "Une erreur est survenue. Veuillez réessayer."
     },
     "header": {
