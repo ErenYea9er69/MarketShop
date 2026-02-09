@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import "./globals.css"
 import { SessionProvider } from "@/components/providers/SessionProvider"
+import { ThemeProvider } from "@/components/providers/ThemeProvider"
 import { CartProvider } from "@/components/providers/CartProvider"
 import { Header } from "@/components/layout/Header"
 import { Footer } from "@/components/layout/Footer"
@@ -31,15 +32,22 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} antialiased`}>
         <SessionProvider>
-          <CartProvider>
-            <div className="min-h-screen flex flex-col">
-              <Header />
-              <main className="flex-1">
-                {children}
-              </main>
-              <Footer />
-            </div>
-          </CartProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <CartProvider>
+              <div className="min-h-screen flex flex-col transition-colors duration-300">
+                <Header />
+                <main className="flex-1">
+                  {children}
+                </main>
+                <Footer />
+              </div>
+            </CartProvider>
+          </ThemeProvider>
         </SessionProvider>
       </body>
     </html>

@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#050505] overflow-hidden selection:bg-[#22c55e]/30">
+    <div className="min-h-screen bg-background overflow-hidden selection:bg-primary/30">
       <AuthModal
         isOpen={authModalOpen}
         onClose={() => setAuthModalOpen(false)}

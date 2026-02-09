@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/Button"
 
 export function BestSellersSection() {
     return (
-        <section className="py-32 relative overflow-hidden bg-[#050505]">
+        <section className="py-32 relative overflow-hidden bg-background">
             {/* Background Elements */}
             <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-[#22c55e]/5 rounded-full blur-[120px] mix-blend-screen animate-pulse-glow" />
-                <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#06b6d4]/5 rounded-full blur-[120px] mix-blend-screen animate-pulse-glow" style={{ animationDelay: "2s" }} />
-                <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02]" />
+                <div className="absolute top-1/4 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] mix-blend-screen animate-pulse-glow" />
+                <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] mix-blend-screen animate-pulse-glow" style={{ animationDelay: "2s" }} />
+                <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] dark:invert-0 invert" />
             </div>
 
             <div className="container mx-auto px-4 relative z-10">
@@ -19,14 +19,14 @@ export function BestSellersSection() {
                 {/* Section Header */}
                 <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
                     <div className="relative">
-                        <h2 className="text-4xl md:text-5xl font-bold text-white mb-2 relative z-10">
-                            Selected for <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#22c55e] to-[#06b6d4]">You</span>
+                        <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-2 relative z-10">
+                            Selected for <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">You</span>
                         </h2>
-                        <p className="text-[#a1a1aa] text-lg max-w-md">
+                        <p className="text-muted-foreground text-lg max-w-md">
                             Top rated digital products chosen by our community this week.
                         </p>
                         {/* Decorative Background Text */}
-                        <span className="absolute -top-12 -left-8 text-9xl font-bold text-white/[0.02] pointer-events-none select-none hidden md:block">
+                        <span className="absolute -top-12 -left-8 text-9xl font-bold text-foreground/[0.02] pointer-events-none select-none hidden md:block">
                             BEST
                         </span>
                     </div>
@@ -34,10 +34,10 @@ export function BestSellersSection() {
                     <Link href="/shop">
                         <Button
                             variant="ghost"
-                            className="rounded-full px-6 h-12 text-white hover:bg-white/5 border border-white/10 hover:border-white/20 transition-all group"
+                            className="rounded-full px-6 h-12 text-foreground hover:bg-accent border border-border hover:border-accent-foreground/20 transition-all group"
                         >
                             View Collection
-                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform text-[#22c55e]" />
+                            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform text-primary" />
                         </Button>
                     </Link>
                 </div>
@@ -81,7 +81,7 @@ export function BestSellersSection() {
                     ].map((product, i) => (
                         <div
                             key={i}
-                            className={`group relative bg-[#0a0a0a] rounded-[2rem] border border-white/5 ${product.borderHover} overflow-hidden transition-all duration-500 hover:-translate-y-2`}
+                            className={`group relative bg-card rounded-[2rem] border border-border ${product.borderHover} overflow-hidden transition-all duration-500 hover:-translate-y-2`}
                         >
                             {/* Dynamic Background Gradient */}
                             <div className={`absolute inset-0 bg-gradient-to-br ${product.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
@@ -89,15 +89,15 @@ export function BestSellersSection() {
                             <div className="relative z-10 p-8 flex flex-col h-full items-center text-center">
 
                                 {/* Floating Icon with Glow */}
-                                <div className={`w-24 h-24 rounded-3xl bg-[#111] border border-white/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 ${product.glowInfo}`}>
-                                    <div className="absolute inset-0 rounded-3xl bg-white/5 blur-xl opacity-0 group-hover:opacity-50 transition-opacity" />
+                                <div className={`w-24 h-24 rounded-3xl bg-background border border-border flex items-center justify-center mb-8 group-hover:scale-110 transition-transform duration-500 ${product.glowInfo}`}>
+                                    <div className="absolute inset-0 rounded-3xl bg-background blur-xl opacity-0 group-hover:opacity-50 transition-opacity" />
                                     <img src={product.image} alt={product.name} className="w-12 h-12 object-contain relative z-10" />
                                 </div>
 
                                 {/* Content */}
                                 <div className="flex-1 space-y-2">
-                                    <div className="text-xs font-bold tracking-widest text-white/40 uppercase">{product.type}</div>
-                                    <h3 className="text-2xl font-bold text-white group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-white/70 transition-colors">
+                                    <div className="text-xs font-bold tracking-widest text-muted-foreground uppercase">{product.type}</div>
+                                    <h3 className="text-2xl font-bold text-foreground group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-foreground group-hover:to-foreground/70 transition-colors">
                                         {product.name}
                                     </h3>
                                 </div>
@@ -105,11 +105,11 @@ export function BestSellersSection() {
                                 {/* Price & Action */}
                                 <div className="mt-8 w-full space-y-4">
                                     <div className="flex items-baseline justify-center gap-1">
-                                        <span className="text-3xl font-bold text-white">{product.price}</span>
-                                        <span className="text-sm font-medium text-white/50">{product.currency}</span>
+                                        <span className="text-3xl font-bold text-foreground">{product.price}</span>
+                                        <span className="text-sm font-medium text-muted-foreground">{product.currency}</span>
                                     </div>
 
-                                    <Button className={`w-full h-12 rounded-xl bg-white/5 border border-white/10 text-white font-medium backdrop-blur-sm transition-all duration-300 ${product.buttonGradient} hover:border-transparent hover:text-white hover:shadow-lg relative overflow-hidden group/btn`}>
+                                    <Button className={`w-full h-12 rounded-xl bg-accent border border-border text-foreground font-medium backdrop-blur-sm transition-all duration-300 ${product.buttonGradient} hover:border-transparent hover:text-white hover:shadow-lg relative overflow-hidden group/btn`}>
                                         <span className="relative z-10 flex items-center justify-center gap-2">
                                             Purchase Now
                                             <ArrowRight className="w-4 h-4 -translate-x-1 opacity-0 group-hover/btn:translate-x-0 group-hover/btn:opacity-100 transition-all" />

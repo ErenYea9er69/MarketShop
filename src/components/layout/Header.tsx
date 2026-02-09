@@ -7,6 +7,7 @@ import { Menu, X, ShoppingCart, LogOut, LayoutDashboard, ChevronDown } from "luc
 import { Button } from "@/components/ui/Button"
 import { useCart } from "@/components/providers/CartProvider"
 import { AuthModal } from "@/components/auth/AuthModal"
+import { ThemeToggle } from "@/components/ui/ThemeToggle"
 
 const languages = [
     { code: "en", name: "English", flag: "🇬🇧" },
@@ -76,10 +77,10 @@ export function Header() {
             >
                 <div
                     className={`flex items-center justify-between pointer-events-auto ${isPillMode
-                            ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border border-[#262626] rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
-                            : isScrolled
-                                ? 'w-full bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#262626]'
-                                : 'w-full bg-transparent'
+                        ? 'bg-[#0a0a0a]/80 backdrop-blur-xl border border-[#262626] rounded-full shadow-[0_8px_32px_rgba(0,0,0,0.5)]'
+                        : isScrolled
+                            ? 'w-full bg-[#0a0a0a]/80 backdrop-blur-md border-b border-[#262626]'
+                            : 'w-full bg-transparent'
                         }`}
                     style={{
                         width: isPillMode ? 'fit-content' : '100%',
@@ -146,8 +147,8 @@ export function Header() {
                                     key={link.href}
                                     href={link.href}
                                     className={`relative px-4 py-1.5 rounded-full text-sm font-medium transition-all duration-300 ${isPillMode
-                                            ? 'text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#262626]'
-                                            : 'text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#262626]/50'
+                                        ? 'text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#262626]'
+                                        : 'text-[#a1a1aa] hover:text-[#fafafa] hover:bg-[#262626]/50'
                                         }`}
                                     style={{
                                         padding: isPillMode ? '6px 16px' : '8px 20px',
@@ -169,6 +170,11 @@ export function Header() {
                             transition: smoothTransition
                         }}
                     >
+                        {/* Theme Toggle */}
+                        <div className="hidden sm:block">
+                            <ThemeToggle />
+                        </div>
+
                         {/* Language Selector */}
                         <div className="relative hidden sm:block">
                             <button
