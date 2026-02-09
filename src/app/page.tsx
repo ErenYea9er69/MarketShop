@@ -5,6 +5,7 @@ import { AuthModal } from "@/components/auth/AuthModal"
 import { HeroSection } from "@/components/home/HeroSection"
 import { BestSellersSection } from "@/components/home/BestSellersSection"
 import { PaymentMethodsSection } from "@/components/home/PaymentMethodsSection"
+import { FAQSection } from "@/components/home/FAQSection"
 
 export default function Home() {
   const [authModalOpen, setAuthModalOpen] = useState(false)
@@ -28,6 +29,8 @@ export default function Home() {
       <BestSellersSection />
 
       <PaymentMethodsSection />
+
+      <FAQSection />
     </div>
   )
 }
