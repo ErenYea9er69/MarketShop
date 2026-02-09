@@ -32,36 +32,32 @@ export default async function ProductPage({ params }: ProductPageProps) {
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                     {/* Left Column: Header Info + Image */}
-                    <div className="flex flex-col gap-8">
-                        <div>
-
-                            <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
-                                {product.name}
-                            </h1>
-                        </div>
-
-                        {/* Product Image */}
-                        <div className="relative aspect-square rounded-[2.5rem] bg-card border border-border overflow-hidden shadow-2xl group w-full">
-                            <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50" />
-
-                            {product.image ? (
-                                <img
-                                    src={product.image}
-                                    alt={product.name}
-                                    className="w-full h-full object-cover relative z-10 hover:scale-105 transition-transform duration-700"
-                                />
-                            ) : (
-                                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/50 to-card relative z-10">
-                                    <span className="text-8xl font-bold text-muted-foreground/10 select-none">
-                                        {product.name.charAt(0)}
-                                    </span>
-                                </div>
-                            )}
-                        </div>
+                    {/* Left Column: Header Info + Image */}
+                    {/* Product Image */}
+                    <div className="relative aspect-square rounded-[2.5rem] bg-card border border-border overflow-hidden shadow-2xl group w-full">
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50" />
+                        {product.image ? (
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-full object-cover relative z-10 hover:scale-105 transition-transform duration-700"
+                            />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/50 to-card relative z-10">
+                                <span className="text-8xl font-bold text-muted-foreground/10 select-none">
+                                    {product.name.charAt(0)}
+                                </span>
+                            </div>
+                        )}
                     </div>
 
                     {/* Right Column: Price, Overview, Actions */}
                     <div className="p-8 rounded-[2.5rem] bg-card/50 backdrop-blur-xl border border-border/50 space-y-8 sticky top-32">
+                        {/* Title */}
+                        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+                            {product.name}
+                        </h1>
+
                         {/* Price & Status Section */}
                         <div className="flex items-start justify-between">
                             <div>
