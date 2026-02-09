@@ -75,7 +75,12 @@ export default async function OrdersPage() {
                                             {orders.map((order) => (
                                                 <tr key={order.id} className="border-b border-[#262626] hover:bg-[#151515] transition-colors">
                                                     <td className="py-4 px-4">
-                                                        <span className="font-mono text-xs text-[#a1a1aa]">#{order.id.slice(-6)}</span>
+                                                        <Link
+                                                            href={`/admin/orders/${order.id}`}
+                                                            className="font-mono text-xs text-[#EAB308] hover:underline"
+                                                        >
+                                                            #{order.id.slice(-6)}
+                                                        </Link>
                                                     </td>
                                                     <td className="py-4 px-4">
                                                         <div>
@@ -91,10 +96,10 @@ export default async function OrdersPage() {
                                                     </td>
                                                     <td className="py-4 px-4">
                                                         <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${order.status === "COMPLETED"
-                                                                ? "bg-green-500/10 text-green-400 border-green-500/20"
-                                                                : order.status === "PENDING"
-                                                                    ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/20"
-                                                                    : "bg-red-500/10 text-red-400 border-red-500/20"
+                                                            ? "bg-green-500/10 text-green-400 border-green-500/20"
+                                                            : order.status === "PENDING"
+                                                                ? "bg-yellow-500/10 text-yellow-400 border-yellow-500/20"
+                                                                : "bg-red-500/10 text-red-400 border-red-500/20"
                                                             }`}>
                                                             {order.status === "COMPLETED" ? <CheckCircle2 className="w-3 h-3" /> :
                                                                 order.status === "PENDING" ? <Clock className="w-3 h-3" /> : <XCircle className="w-3 h-3" />}

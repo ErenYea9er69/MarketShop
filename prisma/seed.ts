@@ -1,6 +1,8 @@
-import { PrismaClient } from ".prisma/client"
+import { PrismaClient } from "@prisma/client"
 import bcrypt from "bcryptjs"
+import "dotenv/config"
 
+console.log("DEBUG: DATABASE_URL is", process.env.DATABASE_URL ? "DEFINED" : "UNDEFINED");
 const prisma = new PrismaClient()
 
 async function main() {
