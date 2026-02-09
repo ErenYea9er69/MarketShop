@@ -67,10 +67,10 @@ export function BestSellersSection() {
                             price: "15.00",
                             currency: "TND",
                             image: "https://upload.wikimedia.org/wikipedia/commons/1/19/Spotify_logo_without_text.svg",
-                            gradient: "from-[#22c55e]/20 to-[#22c55e]/5",
-                            borderHover: "group-hover:border-[#22c55e]/50",
-                            buttonGradient: "hover:from-[#22c55e] hover:to-green-600",
-                            glowInfo: "shadow-[0_0_30px_-5px_rgba(34,197,94,0.3)]"
+                            gradient: "from-[#EAB308]/20 to-[#EAB308]/5",
+                            borderHover: "group-hover:border-[#EAB308]/50",
+                            buttonGradient: "hover:from-[#EAB308] hover:to-amber-500",
+                            glowInfo: "shadow-[0_0_30px_-5px_rgba(234,179,8,0.3)]"
                         },
                         {
                             name: "ChatGPT Plus",

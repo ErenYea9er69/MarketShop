@@ -103,7 +103,7 @@ export function Header() {
                     >
                         <Link href="/" className="flex items-center gap-3 group">
                             <div
-                                className="rounded-xl bg-gradient-to-br from-[#22c55e] to-[#06b6d4] flex items-center justify-center shadow-lg shadow-[#22c55e]/20 group-hover:scale-105 transition-transform duration-300"
+                                className="rounded-xl bg-gradient-to-br from-[#EAB308] to-[#F59E0B] flex items-center justify-center shadow-lg shadow-[#EAB308]/20 group-hover:scale-105 transition-transform duration-300"
                                 style={{
                                     width: isPillMode ? '32px' : '40px',
                                     height: isPillMode ? '32px' : '40px',
@@ -200,7 +200,7 @@ export function Header() {
                         >
                             <ShoppingCart className="group-hover:scale-110 transition-transform" style={{ width: isPillMode ? 16 : 20, height: isPillMode ? 16 : 20 }} />
                             {itemCount > 0 && (
-                                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#22c55e] text-[#0a0a0a] text-[10px] font-bold flex items-center justify-center ring-2 ring-[#0a0a0a] animate-pulse-glow">
+                                <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-[#EAB308] text-[#0a0a0a] text-[10px] font-bold flex items-center justify-center ring-2 ring-[#0a0a0a] animate-pulse-glow">
                                     {itemCount}
                                 </span>
                             )}
@@ -214,7 +214,7 @@ export function Header() {
                                 <div className="flex items-center gap-2">
                                     <Link href="/dashboard">
                                         <div
-                                            className="rounded-full bg-gradient-to-r from-[#22c55e] to-[#06b6d4] flex items-center justify-center text-[#0a0a0a] font-bold cursor-pointer"
+                                            className="rounded-full bg-gradient-to-r from-[#EAB308] to-[#F59E0B] flex items-center justify-center text-[#0a0a0a] font-bold cursor-pointer"
                                             style={{
                                                 width: isPillMode ? '32px' : '40px',
                                                 height: isPillMode ? '32px' : '40px',
@@ -229,7 +229,7 @@ export function Header() {
                                 <Button
                                     onClick={() => openAuth("register")}
                                     size="sm"
-                                    className={`rounded-full shadow-lg shadow-[#22c55e]/20 ${isPillMode ? 'px-4 h-9' : 'px-6'}`}
+                                    className={`rounded-full shadow-lg shadow-[#EAB308]/20 ${isPillMode ? 'px-4 h-9' : 'px-6'}`}
                                     style={{
                                         fontSize: isPillMode ? '13px' : '14px',
                                         transition: smoothTransition

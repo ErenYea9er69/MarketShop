@@ -38,11 +38,11 @@
   --popover: #ffffff;
   --popover-foreground: #0a0a0a;
 
-  --primary: #22c55e;
-  --primary-foreground: #ffffff;
+  --primary: #EAB308;
+  --primary-foreground: #0a0a0a;
 
-  --secondary: #06b6d4;
-  --secondary-foreground: #ffffff;
+  --secondary: #F59E0B;
+  --secondary-foreground: #0a0a0a;
 
   --muted: #f4f4f5;
   --muted-foreground: #71717a;
@@ -52,7 +52,7 @@
 
   --border: #e4e4e7;
   --input: #e4e4e7;
-  --ring: #22c55e;
+  --ring: #EAB308;
 }
 
 .dark {
@@ -65,11 +65,11 @@
   --popover: #0a0a0a;
   --popover-foreground: #fafafa;
 
-  --primary: #22c55e;
-  --primary-foreground: #ffffff;
+  --primary: #EAB308;
+  --primary-foreground: #0a0a0a;
 
-  --secondary: #06b6d4;
-  --secondary-foreground: #ffffff;
+  --secondary: #F59E0B;
+  --secondary-foreground: #0a0a0a;
 
   --muted: #27272a;
   --muted-foreground: #a1a1aa;
@@ -79,7 +79,7 @@
 
   --border: #262626;
   --input: #262626;
-  --ring: #22c55e;
+  --ring: #EAB308;
 }
 
 @layer base {
@@ -116,7 +116,7 @@
   }
 
   .text-glow {
-    text-shadow: 0 0 20px rgba(34, 197, 94, 0.5);
+    text-shadow: 0 0 20px rgba(234, 179, 8, 0.5);
   }
 }
 
@@ -146,11 +146,11 @@
 
   0%,
   100% {
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.2);
+    box-shadow: 0 0 10px rgba(234, 179, 8, 0.2);
   }
 
   50% {
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+    box-shadow: 0 0 20px rgba(234, 179, 8, 0.4);
   }
 }
 

@@ -52,7 +52,7 @@ export function HeroSection({ openAuth }: HeroSectionProps) {
                         <Button
                             size="lg"
                             onClick={openAuth}
-                            className="w-full sm:w-auto px-8 h-14 rounded-2xl text-lg font-semibold bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 shadow-[0_0_20px_rgba(34,197,94,0.3)] transition-all hover:bg-[length:200%_200%] animate-gradient"
+                            className="w-full sm:w-auto px-8 h-14 rounded-2xl text-lg font-semibold bg-gradient-to-r from-primary to-secondary text-primary-foreground hover:opacity-90 shadow-[0_0_20px_rgba(234,179,8,0.3)] transition-all hover:bg-[length:200%_200%] animate-gradient"
                         >
                             Start Shopping
                             <ArrowRight className="ml-2 w-5 h-5" />
