@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
+import { ProductKeysManager } from "@/components/admin/ProductKeysManager"
 import { auth } from "@/lib/auth"
 import { prisma } from "@/lib/prisma"
 import { ArrowLeft, Save, Trash2 } from "lucide-react"
@@ -205,6 +206,10 @@ export default async function EditProductPage({ params }: { params: Promise<{ id
                             </Button>
                         </div>
                     </form>
+
+                    <div className="mt-12 pt-12 border-t border-border/50">
+                        <ProductKeysManager productId={product.id} />
+                    </div>
                 </div>
             </div>
         </div>

@@ -43,8 +43,8 @@ export default async function OrdersPage() {
                                     <div className="flex items-center gap-3 mb-1">
                                         <h3 className="font-bold text-foreground text-lg">Order #{order.id.slice(-6).toUpperCase()}</h3>
                                         <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold tracking-wider uppercase ${order.status === "COMPLETED" ? "bg-emerald-500/10 text-emerald-500 border border-emerald-500/20" :
-                                                order.status === "PENDING" ? "bg-amber-500/10 text-amber-500 border border-amber-500/20" :
-                                                    "bg-red-500/10 text-red-500 border border-red-500/20"
+                                            order.status === "PENDING" ? "bg-amber-500/10 text-amber-500 border border-amber-500/20" :
+                                                "bg-red-500/10 text-red-500 border border-red-500/20"
                                             }`}>
                                             {order.status}
                                         </span>
@@ -60,14 +60,27 @@ export default async function OrdersPage() {
 
                             <div className="space-y-3 pt-4 border-t border-border/50 group-hover:border-primary/10 transition-colors">
                                 {order.items.map((item) => (
-                                    <div key={item.id} className="flex items-center justify-between group/item">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 rounded-lg bg-accent/50 flex items-center justify-center text-xs font-bold text-muted-foreground group-hover/item:text-primary transition-colors">
-                                                {item.quantity}x
+                                    <div key={item.id}>
+                                        <div className="flex items-center justify-between group/item">
+                                            <div className="flex items-center gap-3">
+                                                <div className="w-8 h-8 rounded-lg bg-accent/50 flex items-center justify-center text-xs font-bold text-muted-foreground group-hover/item:text-primary transition-colors">
+                                                    {item.quantity}x
+                                                </div>
+                                                <span className="text-foreground/80 group-hover/item:text-foreground transition-colors">{item.product.name}</span>
                                             </div>
-                                            <span className="text-foreground/80 group-hover/item:text-foreground transition-colors">{item.product.name}</span>
+                                            <span className="text-muted-foreground font-medium font-mono">{(item.price * item.quantity).toFixed(2)} TND</span>
                                         </div>
-                                        <span className="text-muted-foreground font-medium font-mono">{(item.price * item.quantity).toFixed(2)} TND</span>
+                                        {item.deliveryData && (
+                                            <div className="mt-2 text-sm">
+                                                <p className="text-xs text-muted-foreground mb-1 uppercase tracking-wider font-semibold">Digital Content ({item.product.category.replace("_", " ")})</p>
+                                                <div className="bg-[#1a1a1a] p-3 rounded-lg border border-[#333] font-mono text-[#EAB308] whitespace-pre-wrap select-all">
+                                                    {item.deliveryData}
+                                                </div>
+                                                <p className="text-[10px] text-muted-foreground mt-1">
+                                                    * This content is unique to you. Please save it securely.
+                                                </p>
+                                            </div>
+                                        )}
                                     </div>
                                 ))}
                             </div>

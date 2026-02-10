@@ -82,9 +82,9 @@ export default function CartPage() {
                     </div>
                     <h2 className="text-2xl font-bold mb-2 text-[#fafafa]">Order Confirmed!</h2>
                     <p className="text-[#a1a1aa] mb-8">Thank you for your purchase. Your digital items are now available.</p>
-                    <Link href="/dashboard">
+                    <Link href="/dashboard/orders">
                         <Button className="w-full h-12 rounded-xl bg-gradient-to-r from-[#EAB308] to-[#F59E0B] text-black font-bold">
-                            Go to Dashboard
+                            View My Keys & Orders
                         </Button>
                     </Link>
                 </div>

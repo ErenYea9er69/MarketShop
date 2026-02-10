@@ -36,8 +36,20 @@ model Product {
   featured    Boolean     @default(false)
   active      Boolean     @default(true)
   items       OrderItem[]
+  keys        ProductKey[]
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
+}
+
+model ProductKey {
+  id        String   @id @default(cuid())
+  productId String
+  product   Product  @relation(fields: [productId], references: [id], onDelete: Cascade)
+  value     String   // The actual key/code/account
+  isUsed    Boolean  @default(false)
+  orderId   String?  // ID of the order that purchased this key
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Order {

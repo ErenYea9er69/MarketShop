@@ -95,28 +95,30 @@ export default async function DashboardPage() {
                 ) : (
                     <div className="grid gap-4">
                         {recentOrders.map((order) => (
-                            <div key={order.id} className="p-5 rounded-2xl bg-card/50 border border-border/50 flex items-center justify-between hover:border-primary/30 hover:bg-card/80 hover:shadow-lg transition-all duration-300 group">
-                                <div className="flex items-center gap-5">
-                                    <div className="w-12 h-12 rounded-xl bg-accent/50 flex items-center justify-center group-hover:scale-105 transition-transform">
-                                        <ShoppingBag className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                            <Link href="/dashboard/orders" key={order.id} className="block">
+                                <div className="p-5 rounded-2xl bg-card/50 border border-border/50 flex items-center justify-between hover:border-primary/30 hover:bg-card/80 hover:shadow-lg transition-all duration-300 group">
+                                    <div className="flex items-center gap-5">
+                                        <div className="w-12 h-12 rounded-xl bg-accent/50 flex items-center justify-center group-hover:scale-105 transition-transform">
+                                            <ShoppingBag className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
+                                        </div>
+                                        <div>
+                                            <p className="text-foreground font-semibold">Order #{order.id.slice(-6).toUpperCase()}</p>
+                                            <p className="text-sm text-muted-foreground">
+                                                {order.items.length} items • {new Date(order.createdAt).toLocaleDateString()}
+                                            </p>
+                                        </div>
                                     </div>
-                                    <div>
-                                        <p className="text-foreground font-semibold">Order #{order.id.slice(-6).toUpperCase()}</p>
-                                        <p className="text-sm text-muted-foreground">
-                                            {order.items.length} items • {new Date(order.createdAt).toLocaleDateString()}
-                                        </p>
+                                    <div className="text-right">
+                                        <p className="text-foreground font-bold text-lg">{order.total.toFixed(2)} TND</p>
+                                        <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${order.status === "COMPLETED" ? "bg-emerald-500/10 text-emerald-500" :
+                                            order.status === "PENDING" ? "bg-amber-500/10 text-amber-500" :
+                                                "bg-red-500/10 text-red-500"
+                                            }`}>
+                                            {order.status}
+                                        </span>
                                     </div>
                                 </div>
-                                <div className="text-right">
-                                    <p className="text-foreground font-bold text-lg">{order.total.toFixed(2)} TND</p>
-                                    <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full ${order.status === "COMPLETED" ? "bg-emerald-500/10 text-emerald-500" :
-                                        order.status === "PENDING" ? "bg-amber-500/10 text-amber-500" :
-                                            "bg-red-500/10 text-red-500"
-                                        }`}>
-                                        {order.status}
-                                    </span>
-                                </div>
-                            </div>
+                            </Link>
                         ))}
                     </div>
                 )}
