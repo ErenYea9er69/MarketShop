@@ -2,6 +2,7 @@
 
 import { useSession, signOut } from "next-auth/react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { useState, useEffect } from "react"
 import { Menu, X, ShoppingCart, LogOut, LayoutDashboard, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/Button"
@@ -20,12 +21,16 @@ const languages = [
 const smoothTransition = 'all 300ms cubic-bezier(0.4, 0, 0.2, 1)'
 
 export function Header() {
+    const pathname = usePathname()
     const { data: session, status } = useSession()
     const { itemCount } = useCart()
     const { language, setLanguage, t } = useLanguage()
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
     const [langMenuOpen, setLangMenuOpen] = useState(false)
     const [balance, setBalance] = useState<number | null>(null)
+
+    // Hide Header on Admin routes
+    if (pathname?.startsWith("/admin")) return null
 
     // Fetch balance
     useEffect(() => {

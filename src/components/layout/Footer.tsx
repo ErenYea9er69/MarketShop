@@ -1,12 +1,17 @@
 "use client"
 
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Mail } from "lucide-react"
 import { useLanguage } from "@/components/providers/LanguageProvider"
 
 export function Footer() {
     const currentYear = new Date().getFullYear()
     const { t } = useLanguage()
+    const pathname = usePathname()
+
+    // Hide Footer on Admin routes
+    if (pathname?.startsWith("/admin")) return null
 
     return (
         <footer className="border-t border-[#262626] bg-[#0a0a0a]">
