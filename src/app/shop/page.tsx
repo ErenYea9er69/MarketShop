@@ -31,13 +31,19 @@ export default async function ShopPage({ searchParams }: ShopPageProps) {
         ]
     }
 
-    const products = await prisma.product.findMany({
-        where,
-        orderBy: [
-            { featured: "desc" },
-            { createdAt: "desc" },
-        ],
-    })
+    const [products, categories] = await Promise.all([
+        prisma.product.findMany({
+            where,
+            orderBy: [
+                { featured: "desc" },
+                { createdAt: "desc" },
+            ],
+        }),
+        prisma.category.findMany({
+            orderBy: { name: "asc" }
+        })
+    ])
 
-    return <ShopClient products={products} search={search} />
+    return <ShopClient products={products} search={search} categories={categories} />
 }
+

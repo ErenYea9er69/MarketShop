@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { LayoutDashboard, Users, ShoppingBag, CreditCard, Settings, LogOut, Package } from "lucide-react"
+import { LayoutDashboard, Users, ShoppingBag, CreditCard, Settings, LogOut, Package, Layers } from "lucide-react"
 import { auth, signOut } from "@/lib/auth"
 import { redirect } from "next/navigation"
 
@@ -43,6 +43,7 @@ export default async function AdminLayout({
                     <p className="px-4 text-xs font-semibold text-[#a1a1aa] uppercase tracking-wider mb-4 mt-8">Management</p>
                     <NavItem href="/admin/users" icon={<Users className="w-5 h-5" />} label="Users" />
                     <NavItem href="/admin/products" icon={<Package className="w-5 h-5" />} label="Products" />
+                    <NavItem href="/admin/categories" icon={<Layers className="w-5 h-5" />} label="Categories" />
                     <NavItem href="/admin/orders" icon={<ShoppingBag className="w-5 h-5" />} label="Orders" />
                     <NavItem href="/admin/transactions" icon={<CreditCard className="w-5 h-5" />} label="Transactions" />
 

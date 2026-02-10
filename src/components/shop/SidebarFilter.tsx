@@ -5,19 +5,16 @@ import Link from "next/link"
 import { useSearchParams, useRouter } from "next/navigation"
 import { SlidersHorizontal, ChevronDown, Check } from "lucide-react"
 import { useLanguage } from "@/components/providers/LanguageProvider"
+import { type Category } from "@prisma/client"
 
-const categories = [
-    { id: "all", name: "all" },
-    { id: "GIFT_CARDS", name: "GIFT_CARDS" },
-    { id: "SUBSCRIPTIONS", name: "SUBSCRIPTIONS" },
-    { id: "PRODUCT_KEYS", name: "PRODUCT_KEYS" },
-    { id: "TOP_UPS", name: "TOP_UPS" },
-]
+interface SidebarFilterProps {
+    categories: Category[]
+}
 
-export function SidebarFilter() {
+export function SidebarFilter({ categories }: SidebarFilterProps) {
     const searchParams = useSearchParams()
     const router = useRouter()
-    const { t } = useLanguage()
+    const { t, language } = useLanguage()
 
     // Get initial state from URL or default
     const currentCategory = searchParams.get("category") || "all"
@@ -41,6 +38,18 @@ export function SidebarFilter() {
     // Update local state immediately for smooth sliding
     const handleSliderChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setPrice(parseInt(e.target.value))
+    }
+
+    const allCategories = [
+        { id: "all", slug: "all", name: "All", nameAr: "الكل", nameFr: "Tous" },
+        ...categories
+    ]
+
+    const getCategoryName = (cat: any) => {
+        if (cat.id === "all") return t("categories.all") || cat.name
+        if (language === "ar" && cat.nameAr) return cat.nameAr
+        if (language === "fr" && cat.nameFr) return cat.nameFr
+        return cat.name
     }
 
     return (
@@ -84,13 +93,13 @@ export function SidebarFilter() {
                 </div>
 
                 <div className="space-y-2">
-                    {categories.map((cat) => {
-                        const isActive = currentCategory === cat.id || (currentCategory === "all" && cat.id === "all")
+                    {allCategories.map((cat) => {
+                        const isActive = currentCategory === cat.slug || (currentCategory === "all" && cat.slug === "all")
 
                         return (
                             <Link
                                 key={cat.id}
-                                href={`/shop${cat.id !== "all" ? `?category=${cat.id}` : ""}`}
+                                href={`/shop${cat.slug !== "all" ? `?category=${cat.slug}` : ""}`}
                                 className={`
                                     flex items-center justify-between w-full p-2 rounded-lg transition-all duration-200 group
                                     ${isActive
@@ -109,7 +118,7 @@ export function SidebarFilter() {
                                     `}>
                                         {isActive && <Check className="w-3 h-3" />}
                                     </div>
-                                    <span className="text-sm">{t(`categories.${cat.name}`)}</span>
+                                    <span className="text-sm">{getCategoryName(cat)}</span>
                                 </div>
                             </Link>
                         )
@@ -119,3 +128,4 @@ export function SidebarFilter() {
         </div>
     )
 }
+

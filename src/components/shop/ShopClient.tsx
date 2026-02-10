@@ -6,14 +6,15 @@ import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { SidebarFilter } from "@/components/shop/SidebarFilter"
 import { useLanguage } from "@/components/providers/LanguageProvider"
-import { type Product } from "@prisma/client"
+import { type Product, type Category } from "@prisma/client"
 
 interface ShopClientProps {
     products: Product[]
     search: string
+    categories: Category[]
 }
 
-export function ShopClient({ products, search }: ShopClientProps) {
+export function ShopClient({ products, search, categories }: ShopClientProps) {
     const { t } = useLanguage()
 
     return (
@@ -58,9 +59,10 @@ export function ShopClient({ products, search }: ShopClientProps) {
                                 />
                             </form>
 
-                            <SidebarFilter />
+                            <SidebarFilter categories={categories} />
                         </div>
                     </aside>
+
 
                     {/* Right Content */}
                     <div className="flex-1">

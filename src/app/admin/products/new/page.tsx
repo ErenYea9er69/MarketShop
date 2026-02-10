@@ -20,6 +20,10 @@ export default async function NewProductPage() {
         redirect("/")
     }
 
+    const categories = await prisma.category.findMany({
+        orderBy: { name: "asc" },
+    })
+
     async function createProduct(formData: FormData) {
         "use server"
 
@@ -30,11 +34,15 @@ export default async function NewProductPage() {
         const descAr = formData.get("descAr") as string
         const descFr = formData.get("descFr") as string
         const price = parseFloat(formData.get("price") as string)
-        const category = formData.get("category") as string
+        const categorySlug = formData.get("category") as string
         const stock = parseInt(formData.get("stock") as string)
         const image = formData.get("image") as string
         const featured = formData.get("featured") === "on"
         const active = formData.get("active") === "on"
+
+        const categoryObj = await prisma.category.findUnique({
+            where: { slug: categorySlug }
+        })
 
         await prisma.product.create({
             data: {
@@ -45,7 +53,8 @@ export default async function NewProductPage() {
                 descAr: descAr || null,
                 descFr: descFr || null,
                 price,
-                category,
+                category: categorySlug,
+                categoryId: categoryObj?.id,
                 stock,
                 image: image || null,
                 featured,
@@ -100,16 +109,27 @@ export default async function NewProductPage() {
                                     </div>
                                     <div className="space-y-2">
                                         <Label htmlFor="category">Category</Label>
-                                        <select
-                                            id="category"
-                                            name="category"
-                                            className="w-full rounded-xl bg-[#151515] border border-[#262626] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#EAB308]/20 focus:border-[#EAB308]/50 transition-all"
-                                        >
-                                            <option value="GIFT_CARDS">Gift Cards</option>
-                                            <option value="SUBSCRIPTIONS">Subscriptions</option>
-                                            <option value="PRODUCT_KEYS">Product Keys</option>
-                                            <option value="TOP_UPS">Top Ups</option>
-                                        </select>
+                                        {categories.length > 0 ? (
+                                            <select
+                                                id="category"
+                                                name="category"
+                                                className="w-full rounded-xl bg-[#151515] border border-[#262626] px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#EAB308]/20 focus:border-[#EAB308]/50 transition-all"
+                                                required
+                                            >
+                                                {categories.map((cat) => (
+                                                    <option key={cat.id} value={cat.slug}>
+                                                        {cat.name}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        ) : (
+                                            <div className="text-sm text-red-500">
+                                                No categories found.{" "}
+                                                <Link href="/admin/categories/new" className="underline hover:text-red-400">
+                                                    Create one first.
+                                                </Link>
+                                            </div>
+                                        )}
                                     </div>
                                 </CardContent>
                             </Card>
@@ -168,7 +188,7 @@ export default async function NewProductPage() {
                             <Link href="/admin/products">
                                 <Button type="button" variant="ghost">Cancel</Button>
                             </Link>
-                            <Button type="submit" className="min-w-[150px]">
+                            <Button type="submit" className="min-w-[150px]" disabled={categories.length === 0}>
                                 <Plus className="w-4 h-4 mr-2" />
                                 Create Product
                             </Button>
@@ -179,3 +199,4 @@ export default async function NewProductPage() {
         </div>
     )
 }
+

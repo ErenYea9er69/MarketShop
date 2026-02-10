@@ -39,6 +39,23 @@ async function main() {
   })
   console.log("✅ Test client created:", client.email)
 
+  // Create categories
+  const categories = [
+    { name: "Gift Cards", slug: "GIFT_CARDS", nameAr: "بطاقات الهدايا", nameFr: "Cartes Cadeaux" },
+    { name: "Subscriptions", slug: "SUBSCRIPTIONS", nameAr: "الاشتراكات", nameFr: "Abonnements" },
+    { name: "Product Keys", slug: "PRODUCT_KEYS", nameAr: "مفاتيح المنتجات", nameFr: "Clés de Produit" },
+    { name: "Top Ups", slug: "TOP_UPS", nameAr: "شحن رصيد", nameFr: "Recharges" },
+  ]
+
+  for (const cat of categories) {
+    await prisma.category.upsert({
+      where: { slug: cat.slug },
+      update: cat,
+      create: cat,
+    })
+  }
+  console.log("✅ Categories created:", categories.length)
+
   // Create products
   const products = [
     {
@@ -140,16 +157,23 @@ async function main() {
   ]
 
   for (const product of products) {
+    const category = await prisma.category.findUnique({ where: { slug: product.category } })
+    const productData = {
+        ...product,
+        categoryId: category?.id
+    }
+
     await prisma.product.upsert({
       where: { id: product.name.toLowerCase().replace(/\s+/g, "-") },
-      update: product,
+      update: productData,
       create: {
         id: product.name.toLowerCase().replace(/\s+/g, "-"),
-        ...product,
+        ...productData,
       },
     })
   }
   console.log("✅ Products created:", products.length)
+
 
   // Create payment methods
   const paymentMethods = [
