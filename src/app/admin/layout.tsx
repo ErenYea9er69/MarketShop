@@ -42,7 +42,7 @@ export default async function AdminLayout({
                 <div className="mx-5 h-px bg-gradient-to-r from-transparent via-white/[0.06] to-transparent" />
 
                 {/* Navigation */}
-                <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto scrollbar-none">
+                <nav className="flex-1 px-3 py-4 space-y-1 scrollbar-auto-hide">
                     {/* Overview Section */}
                     <div className="px-3 pt-2 pb-3">
                         <span className="text-[10px] font-semibold text-white/20 uppercase tracking-[0.2em]">Overview</span>
