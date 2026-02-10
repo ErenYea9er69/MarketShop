@@ -77,8 +77,8 @@ export default async function UsersPage() {
                                                 </td>
                                                 <td className="py-4 px-4">
                                                     <div className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium border ${user.role === "ADMIN"
-                                                            ? "bg-purple-500/10 text-purple-400 border-purple-500/20"
-                                                            : "bg-[#262626] text-[#a1a1aa] border-transparent"
+                                                        ? "bg-purple-500/10 text-purple-400 border-purple-500/20"
+                                                        : "bg-[#262626] text-[#a1a1aa] border-transparent"
                                                         }`}>
                                                         {user.role === "ADMIN" ? <ShieldAlert className="w-3 h-3" /> : <User className="w-3 h-3" />}
                                                         {user.role}
@@ -95,9 +95,12 @@ export default async function UsersPage() {
                                                     </span>
                                                 </td>
                                                 <td className="py-4 px-4 text-right">
-                                                    <button className="text-xs font-medium text-[#a1a1aa] hover:text-[#fafafa] transition-colors">
+                                                    <Link
+                                                        href={`/admin/users/${user.id}/edit`}
+                                                        className="text-xs font-medium text-[#a1a1aa] hover:text-[#fafafa] transition-colors"
+                                                    >
                                                         Edit
-                                                    </button>
+                                                    </Link>
                                                 </td>
                                             </tr>
                                         ))}
