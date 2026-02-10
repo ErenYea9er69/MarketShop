@@ -51,103 +51,110 @@ export default async function WalletPage() {
     }
 
     return (
-        <div className="py-12">
+        <div className="py-8">
             <div className="container">
-                <div className="max-w-4xl mx-auto">
-                    <h1 className="text-3xl font-bold mb-8">
-                        <span className="gradient-text">My Wallet</span>
+                <div className="max-w-4xl mx-auto space-y-8">
+                    <h1 className="text-3xl font-bold tracking-tight">
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/60">My Wallet</span>
                     </h1>
 
                     {/* Balance Cards */}
-                    <div className="grid sm:grid-cols-2 gap-6 mb-8">
-                        <Card className="bg-gradient-to-br from-[#22c55e]/10 to-[#06b6d4]/10 border-[#22c55e]/30">
-                            <CardContent className="p-6">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-12 h-12 rounded-xl bg-[#22c55e]/20 flex items-center justify-center">
+                    <div className="grid sm:grid-cols-2 gap-6">
+                        <Card className="bg-gradient-to-br from-[#22c55e]/10 to-[#06b6d4]/10 border-[#22c55e]/20 backdrop-blur-sm shadow-[0_8px_30px_-12px_rgba(34,197,94,0.2)] hover:shadow-[0_8px_30px_-6px_rgba(34,197,94,0.3)] transition-all duration-500 group relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#22c55e]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <CardContent className="p-8 relative z-10">
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="w-12 h-12 rounded-2xl bg-[#22c55e]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                                         <Wallet className="w-6 h-6 text-[#22c55e]" />
                                     </div>
-                                    <span className="text-[#a1a1aa]">Balance</span>
+                                    <span className="text-muted-foreground font-medium">Available Balance</span>
                                 </div>
-                                <p className="text-4xl font-bold text-[#fafafa]">
-                                    {user?.balance?.toFixed(2) || "0.00"} <span className="text-lg">TND</span>
+                                <p className="text-5xl font-bold text-foreground tracking-tight">
+                                    {user?.balance?.toFixed(2) || "0.00"} <span className="text-xl text-[#22c55e] font-medium">TND</span>
                                 </p>
                             </CardContent>
                         </Card>
 
-                        <Card>
-                            <CardContent className="p-6">
-                                <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-12 h-12 rounded-xl bg-[#a855f7]/20 flex items-center justify-center">
+                        <Card className="bg-gradient-to-br from-[#a855f7]/10 to-[#ec4899]/10 border-[#a855f7]/20 backdrop-blur-sm shadow-[0_8px_30px_-12px_rgba(168,85,247,0.2)] hover:shadow-[0_8px_30px_-6px_rgba(168,85,247,0.3)] transition-all duration-500 group relative overflow-hidden">
+                            <div className="absolute inset-0 bg-gradient-to-br from-[#a855f7]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                            <CardContent className="p-8 relative z-10">
+                                <div className="flex items-center gap-4 mb-6">
+                                    <div className="w-12 h-12 rounded-2xl bg-[#a855f7]/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
                                         <Gift className="w-6 h-6 text-[#a855f7]" />
                                     </div>
-                                    <span className="text-[#a1a1aa]">Cashback</span>
+                                    <span className="text-muted-foreground font-medium">Cashback Earned</span>
                                 </div>
-                                <p className="text-4xl font-bold text-[#fafafa]">
-                                    {user?.cashback?.toFixed(2) || "0.00"} <span className="text-lg">TND</span>
+                                <p className="text-5xl font-bold text-foreground tracking-tight">
+                                    {user?.cashback?.toFixed(2) || "0.00"} <span className="text-xl text-[#a855f7] font-medium">TND</span>
                                 </p>
                             </CardContent>
                         </Card>
                     </div>
 
                     {/* Actions */}
-                    <div className="flex flex-wrap gap-4 mb-8">
-                        <Link href="/dashboard/wallet/topup">
-                            <Button>
-                                <Plus className="w-4 h-4" />
+                    <div className="flex flex-wrap gap-4">
+                        <Link href="/contact">
+                            <Button className="h-12 px-8 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20 transition-all hover:scale-105 active:scale-95 duration-200">
+                                <Plus className="w-5 h-5 mr-2" />
                                 Top Up Balance
                             </Button>
                         </Link>
                         <Link href="/redeem">
-                            <Button variant="secondary">
-                                <Gift className="w-4 h-4" />
+                            <Button variant="secondary" className="h-12 px-8 rounded-xl bg-card hover:bg-accent border border-border/50 transition-all hover:scale-105 active:scale-95 duration-200">
+                                <Gift className="w-5 h-5 mr-2 text-primary" />
                                 Redeem Gift Card
                             </Button>
                         </Link>
                     </div>
 
                     {/* Transaction History */}
-                    <Card>
-                        <CardHeader className="flex flex-row items-center justify-between">
-                            <CardTitle className="flex items-center gap-2">
-                                <History className="w-5 h-5" />
+                    <Card className="bg-card/50 border-border/50 backdrop-blur-sm shadow-xl">
+                        <CardHeader className="flex flex-row items-center justify-between border-b border-border/40 pb-6">
+                            <CardTitle className="flex items-center gap-2 text-xl font-bold text-foreground">
+                                <History className="w-5 h-5 text-primary" />
                                 Transaction History
                             </CardTitle>
                         </CardHeader>
-                        <CardContent>
+                        <CardContent className="pt-6">
                             {transactions.length === 0 ? (
-                                <div className="text-center py-8 text-[#71717a]">
-                                    No transactions yet
+                                <div className="text-center py-12 text-muted-foreground bg-accent/20 rounded-2xl border border-dashed border-border/60">
+                                    <History className="w-12 h-12 mx-auto mb-3 text-muted-foreground/30" />
+                                    <p>No transactions yet</p>
                                 </div>
                             ) : (
-                                <div className="space-y-4">
+                                <div className="space-y-3">
                                     {transactions.map((tx) => (
                                         <div
                                             key={tx.id}
-                                            className="flex items-center justify-between p-4 rounded-xl bg-[#151515] border border-[#262626]"
+                                            className="flex items-center justify-between p-4 rounded-2xl bg-card border border-border/40 hover:border-primary/20 hover:bg-accent/30 transition-all duration-300 group"
                                         >
-                                            <div className="flex items-center gap-4">
-                                                <div className="w-10 h-10 rounded-full bg-[#0a0a0a] flex items-center justify-center">
+                                            <div className="flex items-center gap-5">
+                                                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-105 ${tx.type === "DEPOSIT" ? "bg-emerald-500/10 text-emerald-500" :
+                                                    tx.type === "PURCHASE" ? "bg-red-500/10 text-red-500" :
+                                                        tx.type === "CASHBACK" ? "bg-purple-500/10 text-purple-500" :
+                                                            "bg-blue-500/10 text-blue-500"
+                                                    }`}>
                                                     {getTypeIcon(tx.type)}
                                                 </div>
                                                 <div>
-                                                    <p className="font-medium text-[#fafafa]">
+                                                    <p className="font-semibold text-foreground text-lg">
                                                         {tx.type === "DEPOSIT" && "Balance Top Up"}
                                                         {tx.type === "PURCHASE" && "Purchase"}
                                                         {tx.type === "CASHBACK" && "Cashback Reward"}
                                                         {tx.type === "GIFT_CARD" && "Gift Card Redeemed"}
                                                     </p>
-                                                    <p className="text-sm text-[#71717a]">
-                                                        {tx.method && `via ${tx.method} • `}
+                                                    <p className="text-sm text-muted-foreground">
+                                                        {tx.method && <span className="font-mono text-xs px-2 py-0.5 rounded bg-accent/50 mr-2">{tx.method}</span>}
                                                         {new Date(tx.createdAt).toLocaleDateString()}
                                                     </p>
                                                 </div>
                                             </div>
                                             <div className="text-right">
-                                                <p className={`font-bold ${tx.type === "PURCHASE" ? "text-[#ef4444]" : "text-[#22c55e]"}`}>
+                                                <p className={`text-xl font-bold ${tx.type === "PURCHASE" ? "text-red-500" : "text-emerald-500"}`}>
                                                     {tx.type === "PURCHASE" ? "-" : "+"}
                                                     {tx.amount.toFixed(2)} TND
                                                 </p>
-                                                <span className={`text-xs px-2 py-1 rounded-full ${getStatusColor(tx.status)}`}>
+                                                <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-1 rounded-full inline-block mt-1 ${getStatusColor(tx.status)}`}>
                                                     {tx.status}
                                                 </span>
                                             </div>
