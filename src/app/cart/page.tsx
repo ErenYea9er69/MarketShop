@@ -11,34 +11,6 @@ export default function CartPage() {
     const { items, removeItem, updateQuantity, total, clearCart } = useCart()
     const { t } = useLanguage()
 
-    if (items.length === 0) {
-        return (
-            <div className="min-h-screen bg-background relative overflow-hidden pt-32 pb-12">
-                {/* Background Elements */}
-                <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-primary/10 via-primary/5 to-transparent blur-3xl opacity-50" />
-                    <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] dark:invert-0 invert" />
-                </div>
-
-                <div className="container w-[75%] max-w-[1400px] mx-auto px-4 relative z-10">
-                    <div className="max-w-md mx-auto text-center">
-                        <div className="w-24 h-24 mx-auto mb-8 rounded-[2rem] bg-card/50 backdrop-blur-xl border border-border/50 flex items-center justify-center">
-                            <ShoppingCart className="w-12 h-12 text-muted-foreground" />
-                        </div>
-                        <h1 className="text-3xl font-bold mb-4">{t("cart.empty")}</h1>
-                        <p className="text-muted-foreground mb-8">{t("cart.emptySubtitle")}</p>
-                        <Link href="/shop">
-                            <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
-                                {t("cart.browseShop")}
-                                <ArrowRight className="w-4 h-4 ml-2" />
-                            </Button>
-                        </Link>
-                    </div>
-                </div>
-            </div>
-        )
-    }
-
     const [isCheckingOut, setIsCheckingOut] = useState(false)
     const [checkoutError, setCheckoutError] = useState("")
     const [showSuccess, setShowSuccess] = useState(false)
@@ -87,6 +59,34 @@ export default function CartPage() {
                             View My Keys & Orders
                         </Button>
                     </Link>
+                </div>
+            </div>
+        )
+    }
+
+    if (items.length === 0) {
+        return (
+            <div className="min-h-screen bg-background relative overflow-hidden pt-32 pb-12">
+                {/* Background Elements */}
+                <div className="absolute inset-0 pointer-events-none">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-primary/10 via-primary/5 to-transparent blur-3xl opacity-50" />
+                    <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] dark:invert-0 invert" />
+                </div>
+
+                <div className="container w-[75%] max-w-[1400px] mx-auto px-4 relative z-10">
+                    <div className="max-w-md mx-auto text-center">
+                        <div className="w-24 h-24 mx-auto mb-8 rounded-[2rem] bg-card/50 backdrop-blur-xl border border-border/50 flex items-center justify-center">
+                            <ShoppingCart className="w-12 h-12 text-muted-foreground" />
+                        </div>
+                        <h1 className="text-3xl font-bold mb-4">{t("cart.empty")}</h1>
+                        <p className="text-muted-foreground mb-8">{t("cart.emptySubtitle")}</p>
+                        <Link href="/shop">
+                            <Button className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-opacity">
+                                {t("cart.browseShop")}
+                                <ArrowRight className="w-4 h-4 ml-2" />
+                            </Button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         )
