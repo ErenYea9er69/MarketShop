@@ -1,6 +1,5 @@
+
 import { NextResponse } from "next/server"
-import { writeFile, mkdir } from "fs/promises"
-import { join } from "path"
 import { auth } from "@/lib/auth"
 
 export async function POST(request: Request) {
@@ -17,21 +16,20 @@ export async function POST(request: Request) {
             return NextResponse.json({ error: "No file provided" }, { status: 400 })
         }
 
+        // Limit file size to 2MB to prevent large DB payloads
+        if (file.size > 2 * 1024 * 1024) {
+            return NextResponse.json({ error: "File too large. Max 2MB." }, { status: 400 })
+        }
+
         const bytes = await file.arrayBuffer()
         const buffer = Buffer.from(bytes)
+        
+        // Convert to Base64 Data URI
+        const mimeType = file.type || 'application/octet-stream'
+        const base64Data = `data:${mimeType};base64,${buffer.toString('base64')}`
 
-        // Create uploads directory if it doesn't exist
-        const uploadDir = join(process.cwd(), "public/uploads")
-        await mkdir(uploadDir, { recursive: true })
-
-        // Generate unique filename
-        const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9)
-        const filename = uniqueSuffix + "-" + file.name.replace(/[^a-zA-Z0-9.-]/g, "")
-        const filepath = join(uploadDir, filename)
-
-        await writeFile(filepath, buffer)
-
-        return NextResponse.json({ url: `/uploads/${filename}` })
+        // Return the Data URI as the "url"
+        return NextResponse.json({ url: base64Data })
     } catch (error) {
         console.error("Upload error:", error)
         return NextResponse.json({ error: "Upload failed" }, { status: 500 })
