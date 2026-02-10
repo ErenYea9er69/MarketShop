@@ -221,6 +221,15 @@ export default function TopUpPage() {
                         {/* Step 2: Select Payment Method */}
                         {step === "method" && (
                             <div className="space-y-3 animate-fade-in">
+                                <Button
+                                    variant="ghost"
+                                    className="mb-2 p-0 h-auto hover:bg-transparent hover:text-primary transition-colors flex items-center gap-2 text-muted-foreground"
+                                    onClick={() => setStep("amount")}
+                                >
+                                    <ArrowLeft className="w-4 h-4" />
+                                    {t("topup.changeAmount")}
+                                </Button>
+
                                 <div className="p-4 rounded-xl bg-primary/5 border border-primary/10 mb-6 text-center">
                                     <span className="text-muted-foreground">{t("topup.selectedAmount")}: </span>
                                     <strong className="text-primary text-xl">{amount} TND</strong>
@@ -250,11 +259,6 @@ export default function TopUpPage() {
                                         </div>
                                     </button>
                                 ))}
-
-                                <Button variant="ghost" className="w-full mt-4" onClick={() => setStep("amount")}>
-                                    <ArrowLeft className="w-4 h-4 mr-2" />
-                                    {t("topup.changeAmount")}
-                                </Button>
                             </div>
                         )}
 
