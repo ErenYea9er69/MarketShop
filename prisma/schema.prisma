@@ -72,6 +72,7 @@ model Transaction {
   method    String?  // D17, OOREDOO, PAYPAL, CRYPTO, FLOUCI, BANK
   status    String   @default("PENDING") // PENDING, COMPLETED, REJECTED
   reference String? // Transaction reference or notes
+  proof     String? // URL to payment proof image
   createdAt DateTime @default(now())
 }
 

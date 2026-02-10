@@ -10,7 +10,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
 
-    const { amount, method } = await req.json()
+    const { amount, method, proof } = await req.json()
 
     if (!amount || amount < 5) {
       return NextResponse.json(
@@ -26,6 +26,13 @@ export async function POST(req: Request) {
       )
     }
 
+    if (!proof) {
+      return NextResponse.json(
+        { error: "Payment proof is required" },
+        { status: 400 }
+      )
+    }
+
     // Create pending transaction
     const transaction = await prisma.transaction.create({
       data: {
@@ -33,6 +40,8 @@ export async function POST(req: Request) {
         type: "DEPOSIT",
         amount,
         method,
+        // @ts-ignore
+        proof: proof as string,
         status: "PENDING",
         reference: `TOPUP-${Date.now()}`,
       },
@@ -54,4 +63,4 @@ export async function POST(req: Request) {
       { status: 500 }
     )
   }
-}
+} 

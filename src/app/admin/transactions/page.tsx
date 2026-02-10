@@ -76,6 +76,16 @@ export default async function TransactionsPage() {
                                                         <p className="text-xs text-[#71717a] mt-1">
                                                             Current balance: {tx.user.balance.toFixed(2)} TND
                                                         </p>
+                                                        {(tx as any).proof && (
+                                                            <a
+                                                                href={(tx as any).proof}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="text-xs text-[#22c55e] hover:underline mt-1 inline-block"
+                                                            >
+                                                                View Proof
+                                                            </a>
+                                                        )}
                                                     </div>
                                                 </div>
 

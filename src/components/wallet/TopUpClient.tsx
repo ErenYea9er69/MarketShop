@@ -54,6 +54,7 @@ export function TopUpClient({ methods }: TopUpClientProps) {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState("")
     const [copied, setCopied] = useState(false)
+    const [proofUrl, setProofUrl] = useState<string | null>(null)
 
     // Merge dynamic data with static assets
     const enrichedMethods = methods.map(m => ({
@@ -306,6 +307,51 @@ export function TopUpClient({ methods }: TopUpClientProps) {
                                     )}
                                 </div>
 
+                                <div className="space-y-4">
+                                    <div className="space-y-2">
+                                        <label className="text-sm font-medium text-foreground">Transaction Reference (Optional)</label>
+                                        <Input
+                                            placeholder="e.g. Transaction ID, Sender Name..."
+                                            className="bg-background/50"
+                                            onChange={(e) => {
+                                                // Optional: handle reference state if needed
+                                            }}
+                                        />
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <label className="text-sm font-medium text-foreground">Proof of Payment (Screenshot)</label>
+                                        <Input
+                                            type="file"
+                                            accept="image/*"
+                                            className="bg-background/50 cursor-pointer file:cursor-pointer file:text-primary file:font-medium"
+                                            onChange={async (e) => {
+                                                const file = e.target.files?.[0]
+                                                if (file) {
+                                                    setLoading(true)
+                                                    const formData = new FormData()
+                                                    formData.append("file", file)
+                                                    try {
+                                                        const res = await fetch("/api/upload", {
+                                                            method: "POST",
+                                                            body: formData,
+                                                        })
+                                                        const data = await res.json()
+                                                        if (data.url) {
+                                                            setProofUrl(data.url)
+                                                        }
+                                                    } catch (err) {
+                                                        console.error("Upload failed", err)
+                                                    } finally {
+                                                        setLoading(false)
+                                                    }
+                                                }
+                                            }}
+                                        />
+                                        <p className="text-xs text-muted-foreground">Upload a screenshot of your successful payment</p>
+                                    </div>
+                                </div>
+
                                 <div className="p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
                                     <p className="text-yellow-500 text-sm flex gap-2">
                                         <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
@@ -320,7 +366,36 @@ export function TopUpClient({ methods }: TopUpClientProps) {
                                         <ArrowLeft className="w-4 h-4 mr-2" />
                                         {t("topup.back")}
                                     </Button>
-                                    <Button className="flex-1 h-12 bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg shadow-primary/20" onClick={handleConfirmPayment} disabled={loading}>
+                                    <Button
+                                        className="flex-1 h-12 bg-gradient-to-r from-primary to-secondary hover:opacity-90 shadow-lg shadow-primary/20"
+                                        onClick={async () => {
+                                            setLoading(true)
+                                            setError("")
+                                            try {
+                                                const res = await fetch("/api/transactions/topup", {
+                                                    method: "POST",
+                                                    headers: { "Content-Type": "application/json" },
+                                                    body: JSON.stringify({
+                                                        amount,
+                                                        method: selectedMethod?.name,
+                                                        proof: proofUrl,
+                                                    }),
+                                                })
+                                                const data = await res.json()
+                                                if (!res.ok) {
+                                                    setError(data.error || t("topup.error"))
+                                                } else {
+                                                    setStep("confirmation")
+                                                }
+                                            } catch {
+                                                setError(t("topup.genericError"))
+                                            } finally {
+                                                setLoading(false)
+                                            }
+                                        }}
+                                        disabled={loading || !proofUrl}
+                                        title={!proofUrl ? "Please upload proof of payment first" : ""}
+                                    >
                                         {loading ? (
                                             <span className="flex items-center gap-2">
                                                 <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
