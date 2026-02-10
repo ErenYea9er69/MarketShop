@@ -92,7 +92,7 @@ export function ShopClient({ products, search }: ShopClientProps) {
                                                     {product.image ? (
                                                         <img
                                                             src={product.image}
-                                                            alt={product.nameAr || product.namefr || product.name}
+                                                            alt={product.nameAr || product.nameFr || product.name}
                                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                                         />
                                                     ) : (
