@@ -6,12 +6,15 @@ import { ArrowLeft, Save, Trash2 } from "lucide-react"
 import { Button } from "@/components/ui/Button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/Card"
 import { Input } from "@/components/ui/Input"
+import { ImageUpload } from "@/components/admin/ImageUpload"
 import { Label } from "@/components/ui/Label"
 import { Textarea } from "@/components/ui/Textarea"
+import { StockInput } from "@/components/admin/StockInput"
 import { Checkbox } from "@/components/ui/Checkbox"
 import { revalidatePath } from "next/cache"
 
-export default async function EditProductPage({ params }: { params: { id: string } }) {
+export default async function EditProductPage({ params }: { params: Promise<{ id: string }> }) {
+    const { id } = await params;
     const session = await auth()
 
     if (!session?.user || session.user.role !== "ADMIN") {
@@ -19,7 +22,7 @@ export default async function EditProductPage({ params }: { params: { id: string
     }
 
     const product = await prisma.product.findUnique({
-        where: { id: params.id },
+        where: { id },
     })
 
     if (!product) {
@@ -50,7 +53,7 @@ export default async function EditProductPage({ params }: { params: { id: string
         const active = formData.get("active") === "on"
 
         await prisma.product.update({
-            where: { id: params.id },
+            where: { id },
             data: {
                 name,
                 nameAr: nameAr || null,
@@ -73,7 +76,7 @@ export default async function EditProductPage({ params }: { params: { id: string
 
     async function deleteProduct() {
         "use server"
-        await prisma.product.delete({ where: { id: params.id } })
+        await prisma.product.delete({ where: { id } })
         revalidatePath("/admin/products")
         redirect("/admin/products")
     }
@@ -152,13 +155,10 @@ export default async function EditProductPage({ params }: { params: { id: string
                                         <Label htmlFor="price">Price (TND)</Label>
                                         <Input id="price" name="price" type="number" step="0.01" defaultValue={product.price} required />
                                     </div>
+                                    <StockInput initialStock={product.stock} />
                                     <div className="space-y-2">
-                                        <Label htmlFor="stock">Stock Quantity</Label>
-                                        <Input id="stock" name="stock" type="number" defaultValue={product.stock} required />
-                                    </div>
-                                    <div className="space-y-2">
-                                        <Label htmlFor="image">Image URL</Label>
-                                        <Input id="image" name="image" defaultValue={product.image || ""} placeholder="/images/products/..." />
+                                        <Label htmlFor="image">Product Image</Label>
+                                        <ImageUpload name="image" defaultValue={product.image || ""} />
                                     </div>
                                     <div className="pt-4 space-y-3">
                                         <div className="flex items-center space-x-2">

@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/Button"
 import { Input } from "@/components/ui/Input"
 import { SidebarFilter } from "@/components/shop/SidebarFilter"
 import { useLanguage } from "@/components/providers/LanguageProvider"
-import { type Product } from "@/lib/dummy-data"
+import { type Product } from "@prisma/client"
 
 interface ShopClientProps {
     products: Product[]
@@ -92,13 +92,13 @@ export function ShopClient({ products, search }: ShopClientProps) {
                                                     {product.image ? (
                                                         <img
                                                             src={product.image}
-                                                            alt={t(`products.${product.id}.name`)}
+                                                            alt={product.nameAr || product.namefr || product.name}
                                                             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                                                         />
                                                     ) : (
                                                         <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted to-card">
                                                             <span className="text-4xl font-bold text-muted-foreground/20 group-hover:text-primary/40 transition-colors">
-                                                                {t(`products.${product.id}.name`).charAt(0)}
+                                                                {product.name.charAt(0)}
                                                             </span>
                                                         </div>
                                                     )}
@@ -118,11 +118,11 @@ export function ShopClient({ products, search }: ShopClientProps) {
                                                 <div className="flex-1 flex flex-col">
                                                     <div className="mb-auto">
                                                         <h3 className="text-lg font-bold text-foreground mb-2 line-clamp-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-secondary transition-all">
-                                                            {t(`products.${product.id}.name`)}
+                                                            {product.name}
                                                         </h3>
-                                                        {product.description && (
+                                                        {(product.description || product.descAr || product.descFr) && (
                                                             <p className="text-sm text-muted-foreground line-clamp-2 h-10 mb-4">
-                                                                {t(`products.${product.id}.description`)}
+                                                                {product.description || product.descAr || product.descFr}
                                                             </p>
                                                         )}
                                                     </div>

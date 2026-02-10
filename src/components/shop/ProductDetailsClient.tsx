@@ -1,0 +1,117 @@
+"use client"
+
+import Link from "next/link"
+import { ArrowLeft, ShoppingCart } from "lucide-react"
+import { Button } from "@/components/ui/Button"
+import { useCart } from "@/components/providers/CartProvider"
+import { useLanguage } from "@/components/providers/LanguageProvider"
+import { useState } from "react"
+import { type Product } from "@prisma/client"
+
+interface ProductDetailsClientProps {
+    product: Product
+}
+
+export function ProductDetailsClient({ product }: ProductDetailsClientProps) {
+    const { addItem } = useCart()
+    const { t } = useLanguage()
+    const [isAdding, setIsAdding] = useState(false)
+
+    const handleAddToCart = () => {
+        setIsAdding(true)
+        addItem({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            image: product.image || undefined,
+        })
+        setTimeout(() => setIsAdding(false), 300)
+    }
+
+    return (
+        <div className="min-h-screen bg-background relative overflow-hidden pt-24 pb-12">
+            {/* Background Elements */}
+            <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-primary/10 via-primary/5 to-transparent blur-3xl opacity-50" />
+                <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] dark:invert-0 invert" />
+            </div>
+
+            <div className="container w-[75%] max-w-[1400px] mx-auto px-4 relative z-10">
+                <Link href="/shop" className="inline-flex items-center text-muted-foreground hover:text-primary transition-colors mb-8 group">
+                    <ArrowLeft className="mr-2 w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                    {t("product.backToShop")}
+                </Link>
+
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    {/* Left Column: Product Image */}
+                    <div className="relative aspect-square rounded-[2.5rem] bg-card border border-border overflow-hidden shadow-2xl group w-full">
+                        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-50" />
+                        {product.image ? (
+                            <img
+                                src={product.image}
+                                alt={product.name}
+                                className="w-full h-full object-cover relative z-10 hover:scale-105 transition-transform duration-700"
+                            />
+                        ) : (
+                            <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-muted/50 to-card relative z-10">
+                                <span className="text-8xl font-bold text-muted-foreground/10 select-none">
+                                    {product.name.charAt(0)}
+                                </span>
+                            </div>
+                        )}
+                    </div>
+
+                    {/* Right Column: Price, Overview, Actions */}
+                    <div className="p-8 rounded-[2.5rem] bg-card/50 backdrop-blur-xl border border-border/50 space-y-8 sticky top-32">
+                        {/* Title */}
+                        <h1 className="text-4xl md:text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-foreground to-foreground/80">
+                            {product.name}
+                        </h1>
+
+                        {/* Price & Status Section */}
+                        <div className="flex items-start justify-between">
+                            <div>
+                                <p className="text-sm text-muted-foreground font-medium mb-1">{t("product.totalPrice")}</p>
+                                <div className="flex items-baseline gap-1">
+                                    <span className="text-5xl font-bold font-mono">{product.price.toFixed(2)}</span>
+                                    <span className="text-xl text-muted-foreground">TND</span>
+                                </div>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <span className="px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-bold uppercase tracking-wider">
+                                    {product.category.replace("_", " ")}
+                                </span>
+                                <span className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider ${product.stock > 0
+                                    ? "bg-emerald-500/10 text-emerald-500"
+                                    : "bg-red-500/10 text-red-500"
+                                    }`}>
+                                    {product.stock > 0 ? t("product.inStock") : t("product.soldOut")}
+                                </span>
+                            </div>
+                        </div>
+
+                        {/* Add to Cart */}
+                        <Button
+                            size="lg"
+                            className={`w-full h-14 text-lg gap-2 shadow-lg shadow-primary/25 rounded-xl bg-gradient-to-r from-primary to-secondary hover:opacity-90 transition-all duration-300 border-0 ${isAdding ? "scale-95" : "hover:scale-[1.02] active:scale-[0.98]"
+                                }`}
+                            disabled={product.stock === 0}
+                            onClick={handleAddToCart}
+                        >
+                            <ShoppingCart className={`w-5 h-5 transition-transform ${isAdding ? "scale-125" : ""}`} />
+                            {product.stock > 0 ? t("product.addToCart") : t("product.outOfStock")}
+                        </Button>
+
+                        {/* Overview Section */}
+                        <div>
+                            <h3 className="font-bold text-lg mb-2">{t("product.overview")}</h3>
+                            <p className="text-muted-foreground leading-relaxed">
+                                {product.description || product.descAr || product.descFr}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
